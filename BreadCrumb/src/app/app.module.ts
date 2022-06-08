@@ -10,12 +10,16 @@ import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MenuComponent } from './Components/menu/menu.component';
+import { HomeComponent } from './Components/home/home.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
