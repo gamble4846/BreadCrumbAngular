@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FoldersFilesService } from 'src/app/Services/FoldersFilesService/folders-files.service';
-import { GoogleScriptService } from 'src/app/Services/GoogleScriptService/google-script.service';
+import { LocalBaseCustomService } from 'src/app/Services/LocalBaseService/local-base-custom.service';
 
 @Component({
   selector: 'app-home',
@@ -9,24 +8,20 @@ import { GoogleScriptService } from 'src/app/Services/GoogleScriptService/google
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public FoldersFiles: FoldersFilesService) { }
+  constructor(public LocalBaseCustom: LocalBaseCustomService) { }
 
   ngOnInit(): void {
     this.getData();
   }
 
   getData(){
-    let body = {
-      'method': 'GET',
-      'Action': "FOLDERSFILES",
-    }
-
-    this.FoldersFiles.getAllData(body)
+    this.LocalBaseCustom.getFoldersFilesFromGoogleSheet()
     .subscribe((response:any) => {
       console.log(response);
-    },
-    (error) => {
-      console.log(error);
-    });
+      this.LocalBaseCustom.getFoldersFilesFromLocalBase()
+      .subscribe((response:any) => {
+        console.log(response);
+      });
+    })
   }
 }
