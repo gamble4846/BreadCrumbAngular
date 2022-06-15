@@ -16,6 +16,7 @@ import { FoldersAndFilesComponent } from './Components/folders-and-files/folders
 import { MoivesComponent } from './Components/moives/moives.component';
 import { BooksComponent } from './Components/books/books.component';
 import { GamesComponent } from './Components/games/games.component';
+import { TvShowsComponent } from './Components/tv-shows/tv-shows.component';
 
 registerLocaleData(en);
 
@@ -27,7 +28,8 @@ registerLocaleData(en);
     FoldersAndFilesComponent,
     MoivesComponent,
     BooksComponent,
-    GamesComponent
+    GamesComponent,
+    TvShowsComponent
   ],
   imports: [
     BrowserModule,

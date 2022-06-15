@@ -11,47 +11,50 @@
 </div>
 
 <div *ngIf="!showAllGames">
+
+  <!-- Game_AltNames: "-"
+  Game_Developer: "Rockstar North"
+  Game_ExtraInformation: "-"
+  Game_Genre: "Action-adventure"
+  Game_Id: 1
+  Game_Name: "Grand Theft Auto: Vice City"
+  Game_Poster: "https://lh3.googleusercontent.com/OB0nj0bHIs5MfNECb7PmxQxD08WwQJgZC-J7G90qkpWp8mqud_QyOGK5CbjOq03bgvDm49dIvpf0885LN9LRJ6gmk67bvsOutALbjac5ti-J3Xv55RZW7PNaqSnil1UwAT6X-6r5Z9hYJbG0bmX52V1JPEfM7oKku0rwqfzDdRSMTwxtGd1SfJT7Hc04bA7BjgpdTfbroN8i4HJnuVEgoi3k9EKMgvvxp5tFIP55BZzKA6NYLsZBrokOWZEraVCLla_K25p0q4hO6AZm3Fi_Wc-CdtvfagmpjmLw5jI_YZUnoXWXcoYvD40dQXCm-pioHV3cHxEDn429VLw2fZZDu5NIRgELrtK7gVw0bBXX2wWRc_9F4cZsXEjz1EasZe0ShZpn0TgHPUg9ANCsN9OOfE7cFeTyzlzVi66H9M4DU3VvbOpP2dqVnAqviB-_mpQjdtnDgu7ayPbXjJYUyYU_kCN6awYtsOGlwuYSs2I7sczGMhyM8XafFLesJY8-J_xYpzU6ygziM-h5XjIGCoTR8dz35YIxU7hSinaeN35iqSJh4wJoirIe2tNZYO_3yKTWTBa1hl2hP-ri2EnMLRkU94cHUYB-34iVITzTGjYgjpeThFLqKVKQhNaAUVdUaL38lA0Y9A7yAW-RSyf9aBq4YL9fBUjm_uN0jQU0ladXxcxpgiYVJX2Sw-vSQvF_KfsDy6kisTgHuiUL0AHifmFDLyI=w718-h404-no?authuser=0"
+  Game_ReleaseYear: 2002 -->
+
   <ul>
-    <li>Movie_IMDB_ID : {{CurrentGameTitle.Movie_IMDB_ID}}</li>
-    <li>Movies_AltNames : {{CurrentGameTitle.Movies_AltNames}}</li>
-    <li>Movies_Directors : {{CurrentGameTitle.Movies_Directors}}</li>
+    <li>Game_AltNames : {{CurrentGameTitle.Game_AltNames}}</li>
+    <li>Game_Developer : {{CurrentGameTitle.Game_Developer}}</li>
+    <li>Game_ExtraInformation : {{CurrentGameTitle.Game_ExtraInformation}}</li>
     <li>Movies_ExtraInformation : {{CurrentGameTitle.Movies_ExtraInformation}}</li>
-    <li>Movies_Genre : {{CurrentGameTitle.Movies_Genre}}</li>
-    <li>Movies_Id : {{CurrentGameTitle.Movies_Id}}</li>
-    <li>Movies_MainName : {{CurrentGameTitle.Movies_MainName}}</li>
-    <li>Movies_Poster : {{CurrentGameTitle.Movies_Poster}}</li>
-    <li>Movies_ReleaseYear : {{CurrentGameTitle.Movies_ReleaseYear}}</li>
-    <li>Movies_Stars : {{CurrentGameTitle.Movies_Stars}}</li>
-    <li>Movies_Ver_Poster : {{CurrentGameTitle.Movies_Ver_Poster}}</li>
-    <li>Movies_Writers : {{CurrentGameTitle.Movies_Writers}}</li>
+    <li>Game_Genre : {{CurrentGameTitle.Game_Genre}}</li>
+    <li>Game_Id : {{CurrentGameTitle.Game_Id}}</li>
+    <li>Game_Name : {{CurrentGameTitle.Game_Name}}</li>
+    <li>Game_Poster : {{CurrentGameTitle.Game_Poster}}</li>
+    <li>Game_ReleaseYear : {{CurrentGameTitle.Game_ReleaseYear}}</li>
   </ul>
 
   <table>
     <tr>
+      <th>Game_Id</th>
       <th>Link_Desc</th>
       <th>Link_Email</th>
       <th>Link_Id</th>
-      <th>Link_Language</th>
+      <th>Link_Name</th>
       <th>Link_Password</th>
-      <th>Link_Quality</th>
       <th>Link_Size</th>
-      <th>Link_Subtitles</th>
       <th>Link_link</th>
-      <th>Movies_Id</th>
-      <th>Streamable</th>
+      <th>Machine</th>
     </tr>
     <tr *ngFor="let data of CurrentGameLinks">
+      <td>{{data.Game_Id}}</td>
       <td>{{data.Link_Desc}}</td>
       <td>{{data.Link_Email}}</td>
       <td>{{data.Link_Id}}</td>
-      <td>{{data.Link_Language}}</td>
+      <td>{{data.Link_Name}}</td>
       <td>{{data.Link_Password}}</td>
-      <td>{{data.Link_Quality}}</td>
       <td>{{data.Link_Size}}</td>
-      <td>{{data.Link_Subtitles}}</td>
       <td>{{data.Link_link}}</td>
-      <td>{{data.Movies_Id}}</td>
-      <td>{{data.Streamable}}</td>
+      <td>{{data.Machine}}</td>
     </tr>
   </table>
 </div>

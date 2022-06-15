@@ -47,4 +47,12 @@ export class GoogleAppScriptsService {
     };
     return this.http.post(this.apiLink, body, this.getOptions());
   }
+
+  GetTvShows(){
+    var body ={
+      "method": "GET",
+      "Action": "TVSHOWS"
+    };
+    return this.http.post(this.apiLink, body, this.getOptions());
+  }
 }

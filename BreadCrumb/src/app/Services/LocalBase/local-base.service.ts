@@ -266,14 +266,14 @@ export class LocalBaseService {
   GetAllGames(){
     let finalData = new Observable((observer:any) => {
       this.db.collection('Games').get().then((resultGET:any) => {
-        let Books:any = [];
+        let Games:any = [];
         resultGET[0].datas.forEach((element:any) => {
           let Titles = element.Data.Titles;
           Titles.map((x:any) => x.ServerId = element.ServerID);
-          Books = Books.concat(Titles);
+          Games = Games.concat(Titles);
         });
 
-        observer.next(Books);
+        observer.next(Games);
         observer.complete();
       })
     });
@@ -287,6 +287,102 @@ export class LocalBaseService {
           let dataToAdd = {datas:response.data};
           this.db.collection('Games').delete().then((resultLBDEL:any) => {
             this.db.collection('Games').add(dataToAdd).then((resultLBADD:any) => {
+              observer.next(true);
+              observer.complete();
+            });
+          });
+        }
+        else{
+          observer.next(false);
+          observer.complete();
+        }
+      },
+      (error) => {
+        observer.next(false);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+  // --------------------------------------------------------------------------------------------
+
+  // --------------------------------TVSHOWS-----------------------------------------------------
+  GetEpisodeLinkByEpisodeId(EpisodeId:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('TvShows').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let allLinks = currentServer.Data.Links;
+        let currentLinks = allLinks.filter((x:any) => x.Episode_Id == EpisodeId);
+        observer.next(currentLinks);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetEpisodesBySeasonId(SeasonId:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('TvShows').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let allEpisodes = currentServer.Data.Episodes;
+        let currentEpisodes = allEpisodes.filter((x:any) => x.Series_Id == SeasonId);
+        observer.next(currentEpisodes);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetSeasonsByTvShowId(TvShowId:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('TvShows').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let allSeasons = currentServer.Data.Seasons;
+        let currentSeasons = allSeasons.filter((x:any) => x.Series_Id == TvShowId);
+        observer.next(currentSeasons);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetTvShowById(TvShowId:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('TvShows').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let currentTitles = currentServer.Data.Titles;
+        let currentTitle = currentTitles.find((x:any) => x.Series_Id == TvShowId);
+        observer.next(currentTitle);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetAllTvShows(){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('TvShows').get().then((resultGET:any) => {
+        let TvShows:any = [];
+        resultGET[0].datas.forEach((element:any) => {
+          let Titles = element.Data.Titles;
+          Titles.map((x:any) => x.ServerId = element.ServerID);
+          TvShows = TvShows.concat(Titles);
+        });
+
+        observer.next(TvShows);
+        observer.complete();
+      })
+    });
+    return finalData;
+  }
+
+  SaveTvShowsFromSheetAndSavetoLocalBase(){
+    let finalData = new Observable((observer:any) => {
+      this.GoogleAppScripts.GetTvShows().subscribe((response:any) => {
+        if(response.status == "200"){
+          let dataToAdd = {datas:response.data};
+          this.db.collection('TvShows').delete().then((resultLBDEL:any) => {
+            this.db.collection('TvShows').add(dataToAdd).then((resultLBADD:any) => {
               observer.next(true);
               observer.complete();
             });
