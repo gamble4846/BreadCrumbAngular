@@ -1,0 +1,47 @@
+<p>books works!</p>
+
+<button (click)="refreshBooks()">Refresh Books</button>
+
+<div *ngIf="showAllBooks">
+  <ul>
+    <li *ngFor="let data of BookTitles">
+      <a (click)="BookTitleClicked(data.ServerId, data.Book_Id)">({{data.Book_Id}}) {{data.Book_Name}}</a>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!showAllBooks">
+  <ul>
+    <li>Authors : {{CurrentBookTitle.Authors}}</li>
+    <li>Binding : {{CurrentBookTitle.Binding}}</li>
+    <li>Book_Id : {{CurrentBookTitle.Book_Id}}</li>
+    <li>Book_Name : {{CurrentBookTitle.Book_Name}}</li>
+    <li>Cover_Image_Link : {{CurrentBookTitle.Cover_Image_Link}}</li>
+    <li>Edition : {{CurrentBookTitle.Edition}}</li>
+    <li>ISBN_10 : {{CurrentBookTitle.ISBN_10}}</li>
+    <li>ISBN_13 : {{CurrentBookTitle.ISBN_13}}</li>
+    <li>Publish_Date : {{CurrentBookTitle.Publish_Date}}</li>
+    <li>Publisher : {{CurrentBookTitle.Publisher}}</li>
+  </ul>
+
+  <table>
+    <tr>
+      <th>Link_Id</th>
+      <th>Book_Id</th>
+      <th>Link_Format</th>
+      <th>Email</th>
+      <th>Link_link</th>
+      <th>Link_Size</th>
+      <th>Link_Password</th>
+    </tr>
+    <tr *ngFor="let data of CurrentBookLinks">
+      <td>{{data.Link_Id}}</td>
+      <td>{{data.Book_Id}}</td>
+      <td>{{data.Link_Format}}</td>
+      <td>{{data.Email}}</td>
+      <td>{{data.Link_link}}</td>
+      <td>{{data.Link_Size}}</td>
+      <td>{{data.Link_Password}}</td>
+    </tr>
+  </table>
+</div>

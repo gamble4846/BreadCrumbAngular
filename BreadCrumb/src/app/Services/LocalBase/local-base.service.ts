@@ -165,4 +165,74 @@ export class LocalBaseService {
     return finalData;
   }
   // --------------------------------------------------------------------------------------------
+
+  // -------------------------------------BOOKS--------------------------------------------------
+  GetBookLinksByMovieId(BookId:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Books').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let AllLinks = currentServer.Data.Links;
+        let currentLinks = AllLinks.filter((x:any) => x.Book_Id == BookId);
+        observer.next(currentLinks);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetBookById(BookId:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Books').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let currentTitles = currentServer.Data.Titles;
+        let currentTitle = currentTitles.find((x:any) => x.Book_Id == BookId);
+        observer.next(currentTitle);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetAllBooks(){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Books').get().then((resultGET:any) => {
+        let Books:any = [];
+        resultGET[0].datas.forEach((element:any) => {
+          let Titles = element.Data.Titles;
+          Titles.map((x:any) => x.ServerId = element.ServerID);
+          Books = Books.concat(Titles);
+        });
+
+        observer.next(Books);
+        observer.complete();
+      })
+    });
+    return finalData;
+  }
+
+  SaveBooksFromSheetAndSavetoLocalBase(){
+    let finalData = new Observable((observer:any) => {
+      this.GoogleAppScripts.GetBooks().subscribe((response:any) => {
+        if(response.status == "200"){
+          let dataToAdd = {datas:response.data};
+          this.db.collection('Books').delete().then((resultLBDEL:any) => {
+            this.db.collection('Books').add(dataToAdd).then((resultLBADD:any) => {
+              observer.next(true);
+              observer.complete();
+            });
+          });
+        }
+        else{
+          observer.next(false);
+          observer.complete();
+        }
+      },
+      (error) => {
+        observer.next(false);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+  // --------------------------------------------------------------------------------------------
 }

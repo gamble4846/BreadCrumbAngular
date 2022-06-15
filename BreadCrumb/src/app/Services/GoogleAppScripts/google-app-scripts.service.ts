@@ -31,4 +31,12 @@ export class GoogleAppScriptsService {
     };
     return this.http.post(this.apiLink, body, this.getOptions());
   }
+
+  GetBooks(){
+    var body ={
+      "method": "GET",
+      "Action": "BOOKS"
+    };
+    return this.http.post(this.apiLink, body, this.getOptions());
+  }
 }

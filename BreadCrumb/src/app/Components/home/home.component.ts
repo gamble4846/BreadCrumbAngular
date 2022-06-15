@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   }
 
   getData(){
-    this.LocalBase.GetAllMovies().subscribe((response:any) => {
+    this.LocalBase.GetAllBooks().subscribe((response:any) => {
       console.log(response);
     });
   }

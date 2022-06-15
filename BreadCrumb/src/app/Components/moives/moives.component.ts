@@ -31,8 +31,8 @@ export class MoivesComponent implements OnInit {
         this.showAllMovies = true;
       }
       else{
-        this.showAllMovies = false;
         this.getMovieById();
+        this.showAllMovies = false;
       }
     });
   }
