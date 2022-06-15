@@ -1,0 +1,22 @@
+<p>folders-and-files works!</p>
+
+<button (click)="refreshFilesAndFolders()">Refresh Folders And Files</button>
+
+<div>
+  <ul *ngIf="onlyServers">
+    <li *ngFor="let data of ServersList">
+      <a href="/FoldersAndFiles?ServerId={{data}}">{{data}}</a>
+    </li>
+  </ul>
+
+  <ul *ngIf="!onlyServers">
+    <li *ngFor="let data of FoldersFilesObj.Folders">
+      <a href="/FoldersAndFiles?ServerId={{FoldersFilesObj.ServerId}}&FolderId={{data.Folder_Id}}">({{data.Folder_Id}}) {{data.Folder_Name}}</a>
+    </li>
+    <hr>
+    <li *ngFor="let data of FoldersFilesObj.Files">
+      <a (click)="getFileLinks(data.Files_Id)">({{data.Files_Id}}) {{data.Files_Name}}</a>
+    </li>
+  </ul>
+</div>
+

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GoogleScriptService } from './google-script.service';
+import { LocalBaseService } from './local-base.service';
 
-describe('GoogleScriptService', () => {
-  let service: GoogleScriptService;
+describe('LocalBaseService', () => {
+  let service: LocalBaseService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GoogleScriptService);
+    service = TestBed.inject(LocalBaseService);
   });
 
   it('should be created', () => {

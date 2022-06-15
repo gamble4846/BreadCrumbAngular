@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalBaseCustomService } from 'src/app/Services/LocalBaseService/local-base-custom.service';
+import { LocalBaseService } from 'src/app/Services/LocalBase/local-base.service';
 
 @Component({
   selector: 'app-home',
@@ -8,20 +8,15 @@ import { LocalBaseCustomService } from 'src/app/Services/LocalBaseService/local-
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public LocalBaseCustom: LocalBaseCustomService) { }
+  constructor(public LocalBase:LocalBaseService) { }
 
   ngOnInit(): void {
     this.getData();
   }
 
   getData(){
-    this.LocalBaseCustom.getFoldersFilesFromGoogleSheet()
-    .subscribe((response:any) => {
+    this.LocalBase.GetFilesLinkByFileID(1, "11on5S8GlObtKkwa96vyXuuE9CUwCCKVL457wUllRITY").subscribe((response:any) => {
       console.log(response);
-      this.LocalBaseCustom.getFoldersFilesFromLocalBase()
-      .subscribe((response:any) => {
-        console.log(response);
-      });
-    })
+    });
   }
 }

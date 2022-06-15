@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './Components/menu/menu.component';
 import { HomeComponent } from './Components/home/home.component';
+import { FoldersAndFilesComponent } from './Components/folders-and-files/folders-and-files.component';
 
 registerLocaleData(en);
 
@@ -19,7 +20,8 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     MenuComponent,
-    HomeComponent
+    HomeComponent,
+    FoldersAndFilesComponent
   ],
   imports: [
     BrowserModule,
