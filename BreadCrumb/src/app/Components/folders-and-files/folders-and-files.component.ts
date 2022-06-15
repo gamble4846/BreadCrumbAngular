@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalBaseService } from 'src/app/Services/LocalBase/local-base.service';
 
 @Component({
@@ -18,26 +18,40 @@ export class FoldersAndFilesComponent implements OnInit {
   UpperFolderIDURL:string = "";
   onlyServers:boolean = false;
 
-  constructor(public LocalBase:LocalBaseService,private route: ActivatedRoute) {
-    this.route.queryParams.subscribe(params => {
-      this.ServerIDURL = params['ServerId'];
-      this.UpperFolderIDURL = params['FolderId'] == "" || params['FolderId'] == null || params['FolderId'] == undefined ? "-" : params['FolderId'];
-    });
-  }
+  constructor(public LocalBase:LocalBaseService,private route: ActivatedRoute, private router:Router) {}
 
   ngOnInit(): void {
     this.StartUpFun();
   }
 
+  ServerClicked(ServerId:any){
+    this.router.navigate(
+      ['/FoldersAndFiles'],
+      { queryParams: { ServerId: ServerId } }
+    );
+  }
+
+  FolderClicked(ServerId:any, FolderId:any){
+    this.router.navigate(
+      ['/FoldersAndFiles'],
+      { queryParams: { ServerId: ServerId, FolderId: FolderId } }
+    );
+  }
+
   StartUpFun(){
-    if(this.ServerIDURL == "" || this.ServerIDURL == null || this.ServerIDURL == undefined){
-      this.getServerList();
-      this.onlyServers = true;
-    }
-    else{
-      this.onlyServers = false;
-      this.getFoldersFiles();
-    }
+    this.route.queryParams.subscribe(params => {
+      this.ServerIDURL = params['ServerId'];
+      this.UpperFolderIDURL = params['FolderId'] == "" || params['FolderId'] == null || params['FolderId'] == undefined ? "-" : params['FolderId'];
+
+      if(this.ServerIDURL == "" || this.ServerIDURL == null || this.ServerIDURL == undefined){
+        this.getServerList();
+        this.onlyServers = true;
+      }
+      else{
+        this.getFoldersFiles();
+        this.onlyServers = false;
+      }
+    });
   }
 
   getServerList(){

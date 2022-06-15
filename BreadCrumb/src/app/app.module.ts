@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './Components/menu/menu.component';
 import { HomeComponent } from './Components/home/home.component';
 import { FoldersAndFilesComponent } from './Components/folders-and-files/folders-and-files.component';
+import { MoivesComponent } from './Components/moives/moives.component';
 
 registerLocaleData(en);
 
@@ -21,7 +22,8 @@ registerLocaleData(en);
     AppComponent,
     MenuComponent,
     HomeComponent,
-    FoldersAndFilesComponent
+    FoldersAndFilesComponent,
+    MoivesComponent
   ],
   imports: [
     BrowserModule,

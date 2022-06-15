@@ -1,0 +1,57 @@
+<p>moives works!</p>
+
+<button (click)="refreshMovies()">Refresh Movies</button>
+
+<div *ngIf="showAllMovies">
+  <ul>
+    <li *ngFor="let data of MovieTitles">
+      <a (click)="MovieTitleClicked(data.ServerId, data.Movies_Id)">({{data.Movies_Id}}) {{data.Movies_MainName}}</a>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!showAllMovies">
+  <ul>
+    <li>Movie_IMDB_ID : {{CurrentMovieTitle.Movie_IMDB_ID}}</li>
+    <li>Movies_AltNames : {{CurrentMovieTitle.Movies_AltNames}}</li>
+    <li>Movies_Directors : {{CurrentMovieTitle.Movies_Directors}}</li>
+    <li>Movies_ExtraInformation : {{CurrentMovieTitle.Movies_ExtraInformation}}</li>
+    <li>Movies_Genre : {{CurrentMovieTitle.Movies_Genre}}</li>
+    <li>Movies_Id : {{CurrentMovieTitle.Movies_Id}}</li>
+    <li>Movies_MainName : {{CurrentMovieTitle.Movies_MainName}}</li>
+    <li>Movies_Poster : {{CurrentMovieTitle.Movies_Poster}}</li>
+    <li>Movies_ReleaseYear : {{CurrentMovieTitle.Movies_ReleaseYear}}</li>
+    <li>Movies_Stars : {{CurrentMovieTitle.Movies_Stars}}</li>
+    <li>Movies_Ver_Poster : {{CurrentMovieTitle.Movies_Ver_Poster}}</li>
+    <li>Movies_Writers : {{CurrentMovieTitle.Movies_Writers}}</li>
+  </ul>
+
+  <table>
+    <tr>
+      <th>Link_Desc</th>
+      <th>Link_Email</th>
+      <th>Link_Id</th>
+      <th>Link_Language</th>
+      <th>Link_Password</th>
+      <th>Link_Quality</th>
+      <th>Link_Size</th>
+      <th>Link_Subtitles</th>
+      <th>Link_link</th>
+      <th>Movies_Id</th>
+      <th>Streamable</th>
+    </tr>
+    <tr *ngFor="let data of CurrentMovieLinks">
+      <td>{{data.Link_Desc}}</td>
+      <td>{{data.Link_Email}}</td>
+      <td>{{data.Link_Id}}</td>
+      <td>{{data.Link_Language}}</td>
+      <td>{{data.Link_Password}}</td>
+      <td>{{data.Link_Quality}}</td>
+      <td>{{data.Link_Size}}</td>
+      <td>{{data.Link_Subtitles}}</td>
+      <td>{{data.Link_link}}</td>
+      <td>{{data.Movies_Id}}</td>
+      <td>{{data.Streamable}}</td>
+    </tr>
+  </table>
+</div>

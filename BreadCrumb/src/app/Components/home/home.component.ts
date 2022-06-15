@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   }
 
   getData(){
-    this.LocalBase.GetFilesLinkByFileID(1, "11on5S8GlObtKkwa96vyXuuE9CUwCCKVL457wUllRITY").subscribe((response:any) => {
+    this.LocalBase.GetAllMovies().subscribe((response:any) => {
       console.log(response);
     });
   }

@@ -23,4 +23,12 @@ export class GoogleAppScriptsService {
     };
     return this.http.post(this.apiLink, body, this.getOptions());
   }
+
+  GetMovies(){
+    var body ={
+      "method": "GET",
+      "Action": "MOVIES"
+    };
+    return this.http.post(this.apiLink, body, this.getOptions());
+  }
 }

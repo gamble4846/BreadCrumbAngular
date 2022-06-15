@@ -5,13 +5,15 @@
 <div>
   <ul *ngIf="onlyServers">
     <li *ngFor="let data of ServersList">
-      <a href="/FoldersAndFiles?ServerId={{data}}">{{data}}</a>
+      <!-- <a routerLink="/FoldersAndFiles?ServerId={{data}}">{{data}}</a> -->
+      <a (click)="ServerClicked(data)">{{data}}</a>
     </li>
   </ul>
 
   <ul *ngIf="!onlyServers">
     <li *ngFor="let data of FoldersFilesObj.Folders">
-      <a href="/FoldersAndFiles?ServerId={{FoldersFilesObj.ServerId}}&FolderId={{data.Folder_Id}}">({{data.Folder_Id}}) {{data.Folder_Name}}</a>
+      <!-- <a routerLink="/FoldersAndFiles?ServerId={{FoldersFilesObj.ServerId}}&ServerId: data={{data.Folder_Id}}">({{data.Folder_Id}}) {{data.Folder_Name}}</a> -->
+      <a (click)="FolderClicked(FoldersFilesObj.ServerId, data.Folder_Id)">({{data.Folder_Id}}) {{data.Folder_Name}}</a>
     </li>
     <hr>
     <li *ngFor="let data of FoldersFilesObj.Files">
