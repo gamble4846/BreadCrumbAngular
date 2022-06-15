@@ -235,4 +235,74 @@ export class LocalBaseService {
     return finalData;
   }
   // --------------------------------------------------------------------------------------------
+
+  // --------------------------------------GAMES-------------------------------------------------
+  GetGameLinksByGameId(GameId:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Games').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let AllLinks = currentServer.Data.Links;
+        let currentLinks = AllLinks.filter((x:any) => x.Game_Id == GameId);
+        observer.next(currentLinks);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetGameById(GameId:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Games').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let currentTitles = currentServer.Data.Titles;
+        let currentTitle = currentTitles.find((x:any) => x.Game_Id == GameId);
+        observer.next(currentTitle);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetAllGames(){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Games').get().then((resultGET:any) => {
+        let Books:any = [];
+        resultGET[0].datas.forEach((element:any) => {
+          let Titles = element.Data.Titles;
+          Titles.map((x:any) => x.ServerId = element.ServerID);
+          Books = Books.concat(Titles);
+        });
+
+        observer.next(Books);
+        observer.complete();
+      })
+    });
+    return finalData;
+  }
+
+  SaveGamesFromSheetAndSavetoLocalBase(){
+    let finalData = new Observable((observer:any) => {
+      this.GoogleAppScripts.GetGames().subscribe((response:any) => {
+        if(response.status == "200"){
+          let dataToAdd = {datas:response.data};
+          this.db.collection('Games').delete().then((resultLBDEL:any) => {
+            this.db.collection('Games').add(dataToAdd).then((resultLBADD:any) => {
+              observer.next(true);
+              observer.complete();
+            });
+          });
+        }
+        else{
+          observer.next(false);
+          observer.complete();
+        }
+      },
+      (error) => {
+        observer.next(false);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+  // --------------------------------------------------------------------------------------------
 }

@@ -12,7 +12,7 @@ export class MoivesComponent implements OnInit {
   ServerIDURL:any = "";
   showAllMovies:boolean = true;
   MovieTitles:any = [];
-  CurrentMovieLinks:any = {};
+  CurrentMovieLinks:any = [];
   CurrentMovieTitle:any = {};
 
   constructor(public LocalBase:LocalBaseService, private route: ActivatedRoute, private router:Router) {}

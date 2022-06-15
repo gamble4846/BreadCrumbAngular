@@ -1,0 +1,57 @@
+<p>games works!</p>
+
+<button (click)="refreshGames()">Refresh Games</button>
+
+<div *ngIf="showAllGames">
+  <ul>
+    <li *ngFor="let data of GameTitles">
+      <a (click)="GameTitleClicked(data.ServerId, data.Game_Id)">({{data.Game_Id}}) {{data.Game_Name}}</a>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!showAllGames">
+  <ul>
+    <li>Movie_IMDB_ID : {{CurrentGameTitle.Movie_IMDB_ID}}</li>
+    <li>Movies_AltNames : {{CurrentGameTitle.Movies_AltNames}}</li>
+    <li>Movies_Directors : {{CurrentGameTitle.Movies_Directors}}</li>
+    <li>Movies_ExtraInformation : {{CurrentGameTitle.Movies_ExtraInformation}}</li>
+    <li>Movies_Genre : {{CurrentGameTitle.Movies_Genre}}</li>
+    <li>Movies_Id : {{CurrentGameTitle.Movies_Id}}</li>
+    <li>Movies_MainName : {{CurrentGameTitle.Movies_MainName}}</li>
+    <li>Movies_Poster : {{CurrentGameTitle.Movies_Poster}}</li>
+    <li>Movies_ReleaseYear : {{CurrentGameTitle.Movies_ReleaseYear}}</li>
+    <li>Movies_Stars : {{CurrentGameTitle.Movies_Stars}}</li>
+    <li>Movies_Ver_Poster : {{CurrentGameTitle.Movies_Ver_Poster}}</li>
+    <li>Movies_Writers : {{CurrentGameTitle.Movies_Writers}}</li>
+  </ul>
+
+  <table>
+    <tr>
+      <th>Link_Desc</th>
+      <th>Link_Email</th>
+      <th>Link_Id</th>
+      <th>Link_Language</th>
+      <th>Link_Password</th>
+      <th>Link_Quality</th>
+      <th>Link_Size</th>
+      <th>Link_Subtitles</th>
+      <th>Link_link</th>
+      <th>Movies_Id</th>
+      <th>Streamable</th>
+    </tr>
+    <tr *ngFor="let data of CurrentGameLinks">
+      <td>{{data.Link_Desc}}</td>
+      <td>{{data.Link_Email}}</td>
+      <td>{{data.Link_Id}}</td>
+      <td>{{data.Link_Language}}</td>
+      <td>{{data.Link_Password}}</td>
+      <td>{{data.Link_Quality}}</td>
+      <td>{{data.Link_Size}}</td>
+      <td>{{data.Link_Subtitles}}</td>
+      <td>{{data.Link_link}}</td>
+      <td>{{data.Movies_Id}}</td>
+      <td>{{data.Streamable}}</td>
+    </tr>
+  </table>
+</div>
