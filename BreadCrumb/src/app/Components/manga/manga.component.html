@@ -1,0 +1,72 @@
+<p>manga works!</p>
+
+<button (click)="refreshManga()">Refresh Manga</button>
+
+<div *ngIf="showAllManga">
+  <ul>
+    <li *ngFor="let data of MangaTitles">
+      <a (click)="MangaTitleClicked(data.ServerId, data.Manga_ID)">({{data.Manga_ID}}) {{data.Manga_Name}}</a>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!showAllManga">
+  <ul>
+    <li>MAL_ID : {{CurrentMangaTitle.MAL_ID}}</li>
+    <li>Manga_AltName : {{CurrentMangaTitle.Manga_AltName}}</li>
+    <li>Manga_Authors : {{CurrentMangaTitle.Manga_Authors}}</li>
+    <li>Manga_CoverPage : {{CurrentMangaTitle.Manga_CoverPage}}</li>
+    <li>Manga_Description : {{CurrentMangaTitle.Manga_Description}}</li>
+    <li>Manga_ExtraInfo : {{CurrentMangaTitle.Manga_ExtraInfo}}</li>
+    <li>Manga_Genres : {{CurrentMangaTitle.Manga_Genres}}</li>
+    <li>Manga_ID : {{CurrentMangaTitle.Manga_ID}}</li>
+    <li>Manga_Name : {{CurrentMangaTitle.Manga_Name}}</li>
+    <li>Manga_ReleaseDate : {{CurrentMangaTitle.Manga_ReleaseDate}}</li>
+  </ul>
+
+  <div>
+    <a class="pad-5" *ngFor="let data of CurrentMangaVolume" (click)="MangaVolumeClicked(data.Volume_ID)">({{data.Volume_ID}}) {{data.Volume_Name}} [{{data.Volume_Number}}] || </a>
+  </div>
+  <hr>
+  <div>
+    <a class="pad-5" *ngFor="let data of CurrentMangaChapter" (click)="MangaChapterClicked(data.Chapter_ID)">({{data.Chapter_ID}}) [{{data.Chapter_Number}}] {{data.Chapter_NAME}}</a>
+  </div>
+  <hr>
+  <div>
+
+    <!-- Chapter_ID: 15
+Link_Color_Language: "Black & White, English"
+Link_Email: "-"
+Link_ExtraInfo: "-"
+Link_ID: 43
+Link_Password: "-"
+Link_Size: "7.1 Mb"
+Link_Type: "PDF (Direct)"
+Link_link: " -->
+
+    <table>
+      <tr>
+        <th>Chapter_ID</th>
+        <th>Link_Color_Language</th>
+        <th>Link_Email</th>
+        <th>Link_ExtraInfo</th>
+        <th>Link_ID</th>
+        <th>Link_Password</th>
+        <th>Link_Size</th>
+        <th>Link_Type</th>
+        <th>Link_link</th>
+      </tr>
+      <tr *ngFor="let data of CurrentMangaLinks">
+        <td>{{data.Chapter_ID}}</td>
+        <td>{{data.Link_Color_Language}}</td>
+        <td>{{data.Link_Email}}</td>
+        <td>{{data.Link_ExtraInfo}}</td>
+        <td>{{data.Link_ID}}</td>
+        <td>{{data.Link_Password}}</td>
+        <td>{{data.Link_Size}}</td>
+        <td>{{data.Link_Type}}</td>
+        <td>{{data.Link_link}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

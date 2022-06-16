@@ -63,4 +63,12 @@ export class GoogleAppScriptsService {
     };
     return this.http.post(this.apiLink, body, this.getOptions());
   }
+
+  GetManga(){
+    var body ={
+      "method": "GET",
+      "Action": "MANGA"
+    };
+    return this.http.post(this.apiLink, body, this.getOptions());
+  }
 }

@@ -5,6 +5,7 @@ import { ComicsComponent } from './Components/comics/comics.component';
 import { FoldersAndFilesComponent } from './Components/folders-and-files/folders-and-files.component';
 import { GamesComponent } from './Components/games/games.component';
 import { HomeComponent } from './Components/home/home.component';
+import { MangaComponent } from './Components/manga/manga.component';
 import { MoivesComponent } from './Components/moives/moives.component';
 import { TvShowsComponent } from './Components/tv-shows/tv-shows.component';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'Games', component: GamesComponent},
   { path: 'TvShows', component: TvShowsComponent},
   { path: 'Comics', component: ComicsComponent},
+  { path: 'Manga', component: MangaComponent},
 ];
 
 @NgModule({

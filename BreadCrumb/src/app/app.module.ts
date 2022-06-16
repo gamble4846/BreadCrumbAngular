@@ -18,6 +18,7 @@ import { BooksComponent } from './Components/books/books.component';
 import { GamesComponent } from './Components/games/games.component';
 import { TvShowsComponent } from './Components/tv-shows/tv-shows.component';
 import { ComicsComponent } from './Components/comics/comics.component';
+import { MangaComponent } from './Components/manga/manga.component';
 
 registerLocaleData(en);
 
@@ -31,7 +32,8 @@ registerLocaleData(en);
     BooksComponent,
     GamesComponent,
     TvShowsComponent,
-    ComicsComponent
+    ComicsComponent,
+    MangaComponent
   ],
   imports: [
     BrowserModule,

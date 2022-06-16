@@ -484,4 +484,100 @@ export class LocalBaseService {
     return finalData;
   }
   // --------------------------------------------------------------------------------------------
+
+  // -----------------------------------MANGA----------------------------------------------------
+  GetChaptersLinksByChapterId(ChapterID:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Manga').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let allLinks = currentServer.Data.Links;
+        let currentLinks = allLinks.filter((x:any) => x.Chapter_ID == ChapterID);
+        observer.next(currentLinks);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetChaptersByVolumeId(VolumeID:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Manga').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let allChapters = currentServer.Data.Chapters;
+        let currentChapters = allChapters.filter((x:any) => x.Volume_ID == VolumeID);
+        observer.next(currentChapters);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetVolumesByMangaId(MangaID:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Manga').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let allVolumes = currentServer.Data.Volumes;
+        let currentVolumes = allVolumes.filter((x:any) => x.Manga_ID == MangaID);
+        observer.next(currentVolumes);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetMangaById(MangaID:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Manga').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let currentTitles = currentServer.Data.Titles;
+        let currentTitle = currentTitles.find((x:any) => x.Manga_ID == MangaID);
+        observer.next(currentTitle);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetAllManga(){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Manga').get().then((resultGET:any) => {
+        let Comics:any = [];
+        resultGET[0].datas.forEach((element:any) => {
+          let Titles = element.Data.Titles;
+          Titles.map((x:any) => x.ServerId = element.ServerID);
+          Comics = Comics.concat(Titles);
+        });
+
+        observer.next(Comics);
+        observer.complete();
+      })
+    });
+    return finalData;
+  }
+
+  SaveMangaFromSheetAndSavetoLocalBase(){
+    let finalData = new Observable((observer:any) => {
+      this.GoogleAppScripts.GetManga().subscribe((response:any) => {
+        if(response.status == "200"){
+          let dataToAdd = {datas:response.data};
+          this.db.collection('Manga').delete().then((resultLBDEL:any) => {
+            this.db.collection('Manga').add(dataToAdd).then((resultLBADD:any) => {
+              observer.next(true);
+              observer.complete();
+            });
+          });
+        }
+        else{
+          observer.next(false);
+          observer.complete();
+        }
+      },
+      (error) => {
+        observer.next(false);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+  // --------------------------------------------------------------------------------------------
 }
