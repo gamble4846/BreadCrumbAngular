@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BooksComponent } from './Components/books/books.component';
+import { ComicsComponent } from './Components/comics/comics.component';
 import { FoldersAndFilesComponent } from './Components/folders-and-files/folders-and-files.component';
 import { GamesComponent } from './Components/games/games.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'Books', component: BooksComponent},
   { path: 'Games', component: GamesComponent},
   { path: 'TvShows', component: TvShowsComponent},
+  { path: 'Comics', component: ComicsComponent},
 ];
 
 @NgModule({

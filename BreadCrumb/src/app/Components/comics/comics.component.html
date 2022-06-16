@@ -1,0 +1,53 @@
+<p>comics works!</p>
+
+<button (click)="refreshComics()">Refresh Comics</button>
+
+<div *ngIf="showAllComics">
+  <ul>
+    <li *ngFor="let data of ComicsTitles">
+      <a (click)="ComicsTitleClicked(data.ServerId, data.Comic_ID)">({{data.Comic_ID}}) {{data.Comic_Name}}</a>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!showAllComics">
+  <ul>
+    <li>Comic_AltName : {{CurrentComicsTitle.Comic_AltName}}</li>
+    <li>Comic_CoverPage : {{CurrentComicsTitle.Comic_CoverPage}}</li>
+    <li>Comic_Description : {{CurrentComicsTitle.Comic_Description}}</li>
+    <li>Comic_ExtraInfo : {{CurrentComicsTitle.Comic_ExtraInfo}}</li>
+    <li>Comic_Genres : {{CurrentComicsTitle.Comic_Genres}}</li>
+    <li>Comic_ID : {{CurrentComicsTitle.Comic_ID}}</li>
+    <li>Comic_Name : {{CurrentComicsTitle.Comic_Name}}</li>
+    <li>Comic_ReleseDate : {{CurrentComicsTitle.Comic_ReleseDate}}</li>
+  </ul>
+
+  <div>
+    <a class="pad-5" *ngFor="let data of CurrentComicsIssues" (click)="ComicsIssuesClicked(data.Issue_ID)">({{data.Issue_ID}}) {{data.Issue_Name}}</a>
+  </div>
+
+  <div>
+    <table>
+      <tr>
+        <th>Issue_ID</th>
+        <th>Link</th>
+        <th>Link_Description</th>
+        <th>Link_Email</th>
+        <th>Link_Id</th>
+        <th>Link_Password</th>
+        <th>Link_Size</th>
+        <th>Link_Type</th>
+      </tr>
+      <tr *ngFor="let data of CurrentComicsLinks">
+        <td>{{data.Issue_ID}}</td>
+        <td>{{data.Link}}</td>
+        <td>{{data.Link_Description}}</td>
+        <td>{{data.Link_Email}}</td>
+        <td>{{data.Link_Id}}</td>
+        <td>{{data.Link_Password}}</td>
+        <td>{{data.Link_Size}}</td>
+        <td>{{data.Link_Type}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

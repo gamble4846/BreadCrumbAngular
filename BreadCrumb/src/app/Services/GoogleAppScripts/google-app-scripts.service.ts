@@ -55,4 +55,12 @@ export class GoogleAppScriptsService {
     };
     return this.http.post(this.apiLink, body, this.getOptions());
   }
+
+  GetComics(){
+    var body ={
+      "method": "GET",
+      "Action": "COMICS"
+    };
+    return this.http.post(this.apiLink, body, this.getOptions());
+  }
 }

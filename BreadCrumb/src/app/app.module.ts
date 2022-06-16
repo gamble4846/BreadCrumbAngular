@@ -17,6 +17,7 @@ import { MoivesComponent } from './Components/moives/moives.component';
 import { BooksComponent } from './Components/books/books.component';
 import { GamesComponent } from './Components/games/games.component';
 import { TvShowsComponent } from './Components/tv-shows/tv-shows.component';
+import { ComicsComponent } from './Components/comics/comics.component';
 
 registerLocaleData(en);
 
@@ -29,7 +30,8 @@ registerLocaleData(en);
     MoivesComponent,
     BooksComponent,
     GamesComponent,
-    TvShowsComponent
+    TvShowsComponent,
+    ComicsComponent
   ],
   imports: [
     BrowserModule,

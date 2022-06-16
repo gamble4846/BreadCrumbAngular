@@ -401,4 +401,87 @@ export class LocalBaseService {
     return finalData;
   }
   // --------------------------------------------------------------------------------------------
+
+  // ------------------------------------COMICS--------------------------------------------------
+  GetIssuesLinksByIssueId(IssueId:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Comics').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let AllLinks = currentServer.Data.Links;
+        let currentLinks = AllLinks.filter((x:any) => x.Issue_ID == IssueId);
+        observer.next(currentLinks);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetIssuesByComicId(ComicId:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Comics').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let AllIssues = currentServer.Data.Issues;
+        let currentIssues = AllIssues.filter((x:any) => x.Comic_ID == ComicId);
+        observer.next(currentIssues);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetComicsById(ComicId:any, ServerId:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Comics').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
+        let currentTitles = currentServer.Data.Titles;
+        let currentTitle = currentTitles.find((x:any) => x.Comic_ID == ComicId);
+        observer.next(currentTitle);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+
+  GetAllComics(){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('Comics').get().then((resultGET:any) => {
+        let Comics:any = [];
+        resultGET[0].datas.forEach((element:any) => {
+          let Titles = element.Data.Titles;
+          Titles.map((x:any) => x.ServerId = element.ServerID);
+          Comics = Comics.concat(Titles);
+        });
+
+        observer.next(Comics);
+        observer.complete();
+      })
+    });
+    return finalData;
+  }
+
+  SaveComicsFromSheetAndSavetoLocalBase(){
+    let finalData = new Observable((observer:any) => {
+      this.GoogleAppScripts.GetComics().subscribe((response:any) => {
+        if(response.status == "200"){
+          let dataToAdd = {datas:response.data};
+          this.db.collection('Comics').delete().then((resultLBDEL:any) => {
+            this.db.collection('Comics').add(dataToAdd).then((resultLBADD:any) => {
+              observer.next(true);
+              observer.complete();
+            });
+          });
+        }
+        else{
+          observer.next(false);
+          observer.complete();
+        }
+      },
+      (error) => {
+        observer.next(false);
+        observer.complete();
+      });
+    });
+    return finalData;
+  }
+  // --------------------------------------------------------------------------------------------
 }
