@@ -1,1 +1,42 @@
-<p>menu works!</p>
+<div class="gs-menu">
+  <div class="gs-menu-left-container">
+    <div class="gs-menu-logo-conatainer">
+      <img src="https://gamble4846.github.io/BreadCrumbWeb/images/logo-svg.png" class="gs-menu-logo">
+    </div>
+    <div class="gs-menu-items">
+      <ul>
+        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'Home'}" (click)="MenuLinkClicked('/Home','Home')">Home</a></li>
+        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'Movies'}" (click)="MenuLinkClicked('/Movies','Movies')">Movies</a></li>
+        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'TvShows'}" (click)="MenuLinkClicked('/TvShows','TvShows')">TvShows</a></li>
+        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'Books'}" (click)="MenuLinkClicked('/Books','Books')">Books</a></li>
+        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'Games'}" (click)="MenuLinkClicked('/Games','Games')">Games</a></li>
+        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'Manga'}" (click)="MenuLinkClicked('/Manga','Manga')">Manga</a></li>
+        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'Comics'}" (click)="MenuLinkClicked('/Comics','Comics')">Comics</a></li>
+        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'FoldersAndFiles'}" (click)="MenuLinkClicked('/FoldersAndFiles','FoldersAndFiles')">Folders Files</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="gs-menu-right-container">
+      <div class="gs-menu-toggle-container" (click)="ToggleMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="gs-menu-toggle-icon"  viewBox="0 0 24 24"><path d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"/></svg>
+      </div>
+  </div>
+
+  <div class="gs-menu-mobile-view" [ngClass]="{'gs-open': menuOpen}">
+    <div class="gs-menu-mobile-exit-click" (click)="ToggleMenu()">
+
+    </div>
+    <div class="gs-menu-items">
+      <ul>
+        <li><a (click)="MenuLinkClicked('/Home','Home')">Home</a></li>
+        <li><a (click)="MenuLinkClicked('/Movies','Movies')">Movies</a></li>
+        <li><a (click)="MenuLinkClicked('/TvShows','TvShows')">TvShows</a></li>
+        <li><a (click)="MenuLinkClicked('/Books','Books')">Books</a></li>
+        <li><a (click)="MenuLinkClicked('/Games','Games')">Games</a></li>
+        <li><a (click)="MenuLinkClicked('/Manga','Manga')">Manga</a></li>
+        <li><a (click)="MenuLinkClicked('/Comics','Comics')">Comics</a></li>
+        <li><a (click)="MenuLinkClicked('/FoldersAndFiles','FoldersAndFiles')">Folders Files</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

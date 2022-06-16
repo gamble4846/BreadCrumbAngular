@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --menuBackgroundColor-gs-menu: #1C1C1E;
+  --mobileMenuBackgroundColor-gs-menu: #1c1c1efa;
+  --menuHeight-gs-menu: 70px;
+  --mobileMenuWidth-gs-menu: 300px;
+  --menuLinksColor-gs-menu: white;
+  --menuLinksHoverColor-gs-menu: #3c97ff;
+  --activeLinksColor-gs-menu: #3c97ff;
+  --activeLinkLineColor-gs-menu: #3c97ff;
+  --activeLinkLineBottom-gs-menu: -26px;
+  --mobileMenuExitDivColor-gs-menu: grey;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1C1C1E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3c97ff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d77ca;
+}
