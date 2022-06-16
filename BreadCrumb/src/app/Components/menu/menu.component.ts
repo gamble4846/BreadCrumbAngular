@@ -17,11 +17,11 @@ export class MenuComponent implements OnInit {
 
   MenuLinkClicked(route:any, pageName:any){
     this.menuOpen = !this.menuOpen;
+    this.currentPage = pageName;
     setTimeout(() => {
       this.router.navigate(
         [route]
       );
-      this.currentPage = pageName;
     }, 500);
   }
 
