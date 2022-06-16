@@ -19,6 +19,7 @@ import { GamesComponent } from './Components/games/games.component';
 import { TvShowsComponent } from './Components/tv-shows/tv-shows.component';
 import { ComicsComponent } from './Components/comics/comics.component';
 import { MangaComponent } from './Components/manga/manga.component';
+import { FooterComponent } from './Components/footer/footer.component';
 
 registerLocaleData(en);
 
@@ -33,7 +34,8 @@ registerLocaleData(en);
     GamesComponent,
     TvShowsComponent,
     ComicsComponent,
-    MangaComponent
+    MangaComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
