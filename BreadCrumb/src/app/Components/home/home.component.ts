@@ -11,12 +11,9 @@ export class HomeComponent implements OnInit {
   constructor(public LocalBase:LocalBaseService) { }
 
   ngOnInit(): void {
-    this.getData();
   }
 
   getData(){
-    this.LocalBase.GetAllBooks().subscribe((response:any) => {
-      console.log(response);
-    });
+
   }
 }
