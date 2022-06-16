@@ -16,11 +16,11 @@ export class MenuComponent implements OnInit {
   }
 
   MenuLinkClicked(route:any, pageName:any){
-    this.menuOpen = !this.menuOpen;
     this.router.navigate(
       [route]
     );
     this.currentPage = pageName;
+    this.menuOpen = !this.menuOpen;
   }
 
   ToggleMenu(){
