@@ -1,1 +1,63 @@
 <p>tv-shows works!</p>
+
+<button (click)="refreshTvShows()">Refresh TvShows</button>
+
+<div *ngIf="showAllTvShows">
+  <ul>
+    <li *ngFor="let data of TvShowTitles">
+      <a (click)="TvShowTitleClicked(data.ServerId, data.Series_Id)">({{data.Series_Id}}) {{data.Series_MainName}}</a>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!showAllTvShows">
+  <ul>
+    <li>Series_AltNames : {{CurrentTvShowTitle.Series_AltNames}}</li>
+    <li>Series_ExtraInformation : {{CurrentTvShowTitle.Series_ExtraInformation}}</li>
+    <li>Series_Genre : {{CurrentTvShowTitle.Series_Genre}}</li>
+    <li>Series_IMDB_ID_TAG_ID : {{CurrentTvShowTitle.Series_IMDB_ID_TAG_ID}}</li>
+    <li>Series_Id : {{CurrentTvShowTitle.Series_Id}}</li>
+    <li>Series_MainName : {{CurrentTvShowTitle.Series_MainName}}</li>
+    <li>Series_Poster : {{CurrentTvShowTitle.Series_Poster}}</li>
+    <li>Series_Ver_Poster : {{CurrentTvShowTitle.Series_Ver_Poster}}</li>
+  </ul>
+
+  <div>
+    <a class="pad-5" *ngFor="let data of CurrentTvShowSeasons" (click)="TvShowSeasonClicked(data.Season_Id)">({{data.Season_Id}}) {{data.Season_Name}}</a>
+  </div>
+  <hr>
+  <div>
+    <a class="pad-5" *ngFor="let data of CurrentTvShowEpisodes" (click)="TvShowEpisodeClicked(data.Episode_Id)">({{data.Episode_Id}}) [{{data.Episode_Number}}] {{data.Episode_Name}}</a>
+  </div>
+  <hr>
+  <div>
+    <table>
+      <tr>
+        <th>Episode_Id</th>
+        <th>Link_Desc</th>
+        <th>Link_Email</th>
+        <th>Link_Id</th>
+        <th>Link_Language</th>
+        <th>Link_Password</th>
+        <th>Link_Quality</th>
+        <th>Link_Size</th>
+        <th>Link_Subtitles</th>
+        <th>Link_link</th>
+        <th>Streamable</th>
+      </tr>
+      <tr *ngFor="let data of CurrentTvShowLinks">
+        <td>{{data.Episode_Id}}</td>
+        <td>{{data.Link_Desc}}</td>
+        <td>{{data.Link_Email}}</td>
+        <td>{{data.Link_Id}}</td>
+        <td>{{data.Link_Language}}</td>
+        <td>{{data.Link_Password}}</td>
+        <td>{{data.Link_Quality}}</td>
+        <td>{{data.Link_Size}}</td>
+        <td>{{data.Link_Subtitles}}</td>
+        <td>{{data.Link_link}}</td>
+        <td>{{data.Streamable}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

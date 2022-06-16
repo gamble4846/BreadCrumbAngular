@@ -307,7 +307,7 @@ export class LocalBaseService {
   // --------------------------------------------------------------------------------------------
 
   // --------------------------------TVSHOWS-----------------------------------------------------
-  GetEpisodeLinkByEpisodeId(EpisodeId:any, ServerId:string){
+  GetEpisodeLinksByEpisodeId(EpisodeId:any, ServerId:string){
     let finalData = new Observable((observer:any) => {
       this.db.collection('TvShows').get().then((resultGET:any) => {
         let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
@@ -325,7 +325,7 @@ export class LocalBaseService {
       this.db.collection('TvShows').get().then((resultGET:any) => {
         let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerId);
         let allEpisodes = currentServer.Data.Episodes;
-        let currentEpisodes = allEpisodes.filter((x:any) => x.Series_Id == SeasonId);
+        let currentEpisodes = allEpisodes.filter((x:any) => x.Season_Id == SeasonId);
         observer.next(currentEpisodes);
         observer.complete();
       });

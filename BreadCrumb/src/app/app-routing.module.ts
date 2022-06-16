@@ -5,6 +5,7 @@ import { FoldersAndFilesComponent } from './Components/folders-and-files/folders
 import { GamesComponent } from './Components/games/games.component';
 import { HomeComponent } from './Components/home/home.component';
 import { MoivesComponent } from './Components/moives/moives.component';
+import { TvShowsComponent } from './Components/tv-shows/tv-shows.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'Home' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'Movies', component: MoivesComponent},
   { path: 'Books', component: BooksComponent},
   { path: 'Games', component: GamesComponent},
+  { path: 'TvShows', component: TvShowsComponent},
 ];
 
 @NgModule({
