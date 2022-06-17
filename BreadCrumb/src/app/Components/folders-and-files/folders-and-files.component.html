@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="folders-and-files-table-container">
     <table class="folders-and-files-table">
       <thead>
         <tr>
@@ -25,26 +25,44 @@
         </tr>
       </thead>
       <tbody *ngIf="onlyServers">
-        <tr *ngFor="let data of ServersList" (click)="ServerClicked(data)">
-          <td class="type-td"><img [src]="GetIconSRC('Server')" class="folders-files-icon"></td>
-          <td class="name-td">{{data}}</td>
-          <td class="info-td"><img [src]="GetIconSRC('info')" class="folders-files-icon"></td>
+        <tr *ngFor="let data of ServersList">
+          <td class="type-td" (click)="ServerClicked(data)"><img [src]="GetIconSRC('Server')" class="folders-files-icon"></td>
+          <td class="name-td" (click)="ServerClicked(data)">{{data}}</td>
+          <td class="info-td" (click)="OpenInfo('server',data)"><img [src]="GetIconSRC('info')" class="folders-files-icon"></td>
         </tr>
       </tbody>
 
       <tbody *ngIf="!onlyServers">
-        <tr *ngFor="let data of FoldersFilesObj.Folders" (click)="FolderClicked(FoldersFilesObj.ServerId, data.Folder_Id)">
-          <td class="type-td"><img [src]="GetIconSRC('folder')" class="folders-files-icon"></td>
-          <td class="name-td">{{data.Folder_Name}}</td>
-          <td class="info-td"><img [src]="GetIconSRC('info')" class="folders-files-icon"></td>
+        <tr *ngFor="let data of FoldersFilesObj.Folders">
+          <td class="type-td" (click)="FolderClicked(FoldersFilesObj.ServerId, data.Folder_Id)"><img [src]="GetIconSRC('folder')" class="folders-files-icon"></td>
+          <td class="name-td" (click)="FolderClicked(FoldersFilesObj.ServerId, data.Folder_Id)">{{data.Folder_Name}}</td>
+          <td class="info-td" (click)="OpenInfo('folder',data)"><img [src]="GetIconSRC('info')" class="folders-files-icon"></td>
         </tr>
-        <tr *ngFor="let data of FoldersFilesObj.Files" (click)="getFileLinks(data.Files_Id)">
-          <td class="type-td"><img [src]="GetIconSRC(data.File_Type)" class="folders-files-icon"></td>
-          <td class="name-td">{{data.Files_Name}}</td>
-          <td class="info-td"><img [src]="GetIconSRC('info')" class="folders-files-icon"></td>
+        <tr *ngFor="let data of FoldersFilesObj.Files">
+          <td class="type-td" (click)="getFileLinks(data.Files_Id)"><img [src]="GetIconSRC(data.File_Type)" class="folders-files-icon"></td>
+          <td class="name-td" (click)="getFileLinks(data)">{{data.Files_Name}}</td>
+          <td class="info-td" (click)="OpenInfo('file',data)"><img [src]="GetIconSRC('info')" class="folders-files-icon"></td>
         </tr>
       </tbody>
     </table>
   </div>
+
+  <nz-drawer [nzBodyStyle]="{ overflow: 'auto' }" [nzMaskClosable]="false" [nzVisible]="infoOpened" (nzOnClose)="CloseInfo()">
+    <ng-container *nzDrawerContent>
+      {{dataInfo}}
+    </ng-container>
+  </nz-drawer>
+
+  <nz-modal [(nzVisible)]="fileOpened" nzCentered (nzOnCancel)="CloseFile()" nzTitle="{{OpenedFile.Files_Name}}" nzWidth="90vw">
+    <ng-container *nzModalContent>
+      <div class="openedFileLinksContainer" *ngFor="let data of OpenedFileLinks; let i = index">
+        <span (click)="OpenLink(data)">Link {{i+1}}</span>
+      </div>
+      <div class="openedLinkContainer">
+        <iframe [src]="OpenedGoogleDriveFileEmbbedLink | safe" allow="autoplay" class="openedIframeLink"></iframe>
+      </div>
+    </ng-container>
+    <ng-container *nzModalFooter></ng-container>
+  </nz-modal>
 </div>
 

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DataProvidersService } from 'src/app/Services/DataProviders/data-providers.service';
 import { LocalBaseService } from 'src/app/Services/LocalBase/local-base.service';
 
+
 @Component({
   selector: 'app-folders-and-files',
   templateUrl: './folders-and-files.component.html',
@@ -21,6 +22,9 @@ export class FoldersAndFilesComponent implements OnInit {
   UpperFolderIDURL:string = "";
   onlyServers:boolean = false;
   currentLocation:any = [];
+  dataInfo:any = {};
+  infoOpened:boolean = false;
+  fileOpened:boolean = false;
 
   constructor(public LocalBase:LocalBaseService,private route: ActivatedRoute, private router:Router) {}
 
@@ -104,10 +108,44 @@ export class FoldersAndFilesComponent implements OnInit {
     });
   }
 
-  getFileLinks(FileId:any){
+  getFileLinks(File:any){
+    let FileId = File.Files_Id;
     this.LocalBase.GetFilesLinkByFileID(FileId,this.ServerIDURL).subscribe((response:any) => {
-      console.log(response);
+      this.OpenFile(response, File);
     });
+  }
+
+  OpenInfo(type:any, data:any){
+    this.infoOpened = true;
+    this.dataInfo = data;
+    console.log(data);
+  }
+
+  CloseInfo(){
+    this.infoOpened = false;
+  }
+
+  OpenedFile:any = {};
+  OpenedFileLinks:any = [];
+  CurrentLink:any = {};
+  OpenedGoogleDriveFileEmbbedLink:any = "";
+
+  OpenFile(fileLinks:any, file:any){
+    this.fileOpened = true;
+    this.OpenedFile = file;
+    this.OpenedFileLinks = fileLinks;
+    if(this.OpenedFileLinks.length > 0){
+      this.OpenLink(this.OpenedFileLinks[0]);
+    }
+  }
+
+  CloseFile(){
+    this.fileOpened = false;
+  }
+
+  OpenLink(data:any){
+    this.CurrentLink = data;
+    this.OpenedGoogleDriveFileEmbbedLink = "https://drive.google.com/file/d/" + this.CurrentLink.Link_link.split("/")[5] + "/preview";
   }
 
   GetIconSRC(iconName:string){

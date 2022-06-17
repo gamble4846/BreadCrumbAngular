@@ -25,6 +25,9 @@ import { environment } from '../environments/environment';
 
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { SafePipe } from './Pipes/SafePipe/safe.pipe';
 
 registerLocaleData(en);
 
@@ -40,7 +43,8 @@ registerLocaleData(en);
     TvShowsComponent,
     ComicsComponent,
     MangaComponent,
-    FooterComponent
+    FooterComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +54,8 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     NzTableModule,
     NzIconModule,
+    NzDrawerModule,
+    NzModalModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
