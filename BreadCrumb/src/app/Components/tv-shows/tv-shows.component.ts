@@ -98,7 +98,6 @@ export class TvShowsComponent implements OnInit {
   getLinksByEpisodeId(){
     this.LocalBase.GetEpisodeLinksByEpisodeId(this.EpisodeIdURL, this.ServerIDURL).subscribe((response:any) => {
       this.CurrentTvShowLinks = response;
-      console.log(response);
     });
   }
 

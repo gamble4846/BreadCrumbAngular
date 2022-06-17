@@ -28,6 +28,13 @@ export class FoldersAndFilesComponent implements OnInit {
     this.StartUpFun();
   }
 
+  ShowAllServers(){
+    this.currentLocation = [];
+    this.router.navigate(
+      ['/FoldersAndFiles']
+    );
+  }
+
   ServerClicked(ServerId:any){
     this.router.navigate(
       ['/FoldersAndFiles'],
@@ -59,8 +66,8 @@ export class FoldersAndFilesComponent implements OnInit {
   }
 
   getCurrentLocation(){
+    this.currentLocation = [];
     if(this.UpperFolderIDURL != "-"){
-      this.currentLocation = [];
       this.LocalBase.GetAllFodlersByServerID(this.ServerIDURL).subscribe((response:any) => {
         let allFolders = response;
         this.currentLocation.push(allFolders.find((x:any) => x.Folder_Id == this.UpperFolderIDURL));

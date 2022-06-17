@@ -56,7 +56,6 @@ export class GamesComponent implements OnInit {
     });
 
     this.LocalBase.GetGameLinksByGameId(this.GameIDURL, this.ServerIDURL).subscribe((response:any) => {
-      console.log(response);
       this.CurrentGameLinks = response;
     });
   }

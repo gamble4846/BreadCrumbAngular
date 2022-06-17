@@ -56,7 +56,6 @@ export class MoivesComponent implements OnInit {
     });
 
     this.LocalBase.GetMovieLinksByMovieId(this.MovieIDURL, this.ServerIDURL).subscribe((response:any) => {
-      console.log(response);
       this.CurrentMovieLinks = response;
     });
   }

@@ -130,6 +130,9 @@
 
 .currentLoactionContainer .folder-CurrentLocation{
   color: var(--menuLinksHoverColor-gs-menu);
+}
+
+.currentLoactionContainer .folder-CurrentLocation .realLink{
   cursor: pointer;
 }
 

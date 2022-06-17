@@ -85,7 +85,6 @@ export class MangaComponent implements OnInit {
   getLinksByChapterId(){
     this.LocalBase.GetChaptersLinksByChapterId(this.ChapterIdURL, this.ServerIDURL).subscribe((response:any) => {
       this.CurrentMangaLinks = response;
-      console.log(this.CurrentMangaLinks);
     });
   }
 

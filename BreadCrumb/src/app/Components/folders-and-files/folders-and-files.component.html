@@ -4,8 +4,14 @@
   </button>
 
   <div class="currentLoactionContainer">
-    <div class="folder-CurrentLocation" *ngFor="let data of currentLocation" (click)="FolderClicked(FoldersFilesObj.ServerId, data.Folder_Id)">
-      {{data.Folder_Name}} <span class="slash">/</span>
+    <div class="folder-CurrentLocation">
+      <span class="realLink" (click)="ShowAllServers()">All Servers</span> <span class="slash">/</span>
+    </div>
+    <div class="folder-CurrentLocation" *ngIf="this.ServerIDURL != '' && this.ServerIDURL != null && this.ServerIDURL != undefined">
+      <span class="realLink" (click)="ServerClicked(ServerIDURL)">This Server</span> <span class="slash">/</span>
+    </div>
+    <div class="folder-CurrentLocation" *ngFor="let data of currentLocation">
+      <span class="realLink" (click)="FolderClicked(FoldersFilesObj.ServerId, data.Folder_Id)">{{data.Folder_Name}}</span> <span class="slash">/</span>
     </div>
   </div>
 
