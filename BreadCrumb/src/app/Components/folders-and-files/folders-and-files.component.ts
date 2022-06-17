@@ -20,6 +20,7 @@ export class FoldersAndFilesComponent implements OnInit {
   ServerIDURL:string = "";
   UpperFolderIDURL:string = "";
   onlyServers:boolean = false;
+  currentLocation:any = [];
 
   constructor(public LocalBase:LocalBaseService,private route: ActivatedRoute, private router:Router) {}
 
@@ -52,9 +53,20 @@ export class FoldersAndFilesComponent implements OnInit {
       }
       else{
         this.getFoldersFiles();
+        this.getCurrentLocation();
         this.onlyServers = false;
       }
     });
+  }
+
+  getCurrentLocation(){
+    while(this.currentLocation[this.currentLocation.length - 1]){
+
+    }
+  }
+
+  getUpperFolder(){
+    let folders = this.FoldersFilesObj.Folders;
   }
 
   getServerList(){
