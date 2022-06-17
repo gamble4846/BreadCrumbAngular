@@ -62,7 +62,10 @@
         <iframe [src]="OpenedGoogleDriveFileEmbbedLink | safe" allow="autoplay" class="openedIframeLink"></iframe>
       </div>
     </ng-container>
-    <ng-container *nzModalFooter></ng-container>
+    <ng-container *nzModalFooter>
+      <button (click)="PreviousFile(OpenedFile.Files_Id)">Previous</button>
+      <button (click)="NextFile(OpenedFile.Files_Id)">Next</button>
+    </ng-container>
   </nz-modal>
 </div>
 

@@ -25,6 +25,10 @@ export class FoldersAndFilesComponent implements OnInit {
   dataInfo:any = {};
   infoOpened:boolean = false;
   fileOpened:boolean = false;
+  OpenedFile:any = {};
+  OpenedFileLinks:any = [];
+  CurrentLink:any = {};
+  OpenedGoogleDriveFileEmbbedLink:any = "";
 
   constructor(public LocalBase:LocalBaseService,private route: ActivatedRoute, private router:Router) {}
 
@@ -125,11 +129,6 @@ export class FoldersAndFilesComponent implements OnInit {
     this.infoOpened = false;
   }
 
-  OpenedFile:any = {};
-  OpenedFileLinks:any = [];
-  CurrentLink:any = {};
-  OpenedGoogleDriveFileEmbbedLink:any = "";
-
   OpenFile(fileLinks:any, file:any){
     this.fileOpened = true;
     this.OpenedFile = file;
@@ -150,5 +149,21 @@ export class FoldersAndFilesComponent implements OnInit {
 
   GetIconSRC(iconName:string){
     return DataProvidersService.GetIconSRC(iconName);
+  }
+
+  PreviousFile(fileId:any){
+    let files = this.FoldersFilesObj.Files;
+    let currentIndex = files.findIndex((x:any) => x.Files_Id == fileId);
+    if(currentIndex != 0 && currentIndex != -1){
+      this.getFileLinks(files[currentIndex+1]);
+    }
+  }
+
+  NextFile(fileId:any){
+    let files = this.FoldersFilesObj.Files;
+    let currentIndex = files.findIndex((x:any) => x.Files_Id == fileId);
+    if(currentIndex < files.length && currentIndex != -1){
+      this.getFileLinks(files[currentIndex+1]);
+    }
   }
 }
