@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataProvidersService } from 'src/app/Services/DataProviders/data-providers.service';
 import { LocalBaseService } from 'src/app/Services/LocalBase/local-base.service';
 
 @Component({
@@ -78,5 +79,9 @@ export class FoldersAndFilesComponent implements OnInit {
     this.LocalBase.GetFilesLinkByFileID(FileId,this.ServerIDURL).subscribe((response:any) => {
       console.log(response);
     });
+  }
+
+  GetIconSRC(iconName:string){
+    return DataProvidersService.GetIconSRC(iconName);
   }
 }

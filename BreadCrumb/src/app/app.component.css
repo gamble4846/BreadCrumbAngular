@@ -1,4 +1,6 @@
 .routerContainer{
-  margin-top: 80px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: var(--pageBackground-color-bread-crumb);
   min-height: 100vh;
 }

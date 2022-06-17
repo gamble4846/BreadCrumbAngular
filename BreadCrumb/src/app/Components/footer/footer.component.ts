@@ -11,7 +11,6 @@ export class FooterComponent implements OnInit {
   menuList:any = [];
   constructor(private router:Router) {
     this.menuList = DataProvidersService.MenuList;
-    console.log(this.menuList);
   }
 
   ngOnInit(): void {

@@ -8,8 +8,9 @@
 }
 
 :root {
-  --menuBackgroundColor-gs-menu: #1C1C1E;
-  --mobileMenuBackgroundColor-gs-menu: #1c1c1efa;
+  --menuBackgroundColor-gs-menu: #191919;
+  --mobileMenuBackgroundColor-gs-menu: #191919;
+  --pageBackground-color-bread-crumb: #141414;
   --menuHeight-gs-menu: 70px;
   --mobileMenuWidth-gs-menu: 300px;
   --menuLinksColor-gs-menu: white;
@@ -18,12 +19,23 @@
   --activeLinkLineColor-gs-menu: #3c97ff;
   --activeLinkLineBottom-gs-menu: -27px;
   --mobileMenuExitDivColor-gs-menu: grey;
-  --footerBackgroundColor-gs-footer-one: #1C1C1E;
+
+  --footerBackgroundColor-gs-footer-one: #191919;
   --footerPadding-gs-footer-one: 30px;
   --footerHeader-Text-Color-gs-footer-one: white;
   --footerBody-Text-Color-gs-footer-one: #737373;
   --footerSocialBackgroundColor-gs-footer-one: #818a91;
   --transition-time-gs-footer-one: 0.3s;
+
+  --button-font-size-gs-minimalist-buttons: 15px;
+  --button-fill-color-gs-minimalist-buttons: #191919;
+  --button-text-color-gs-minimalist-buttons:  white;
+  --button-hover-color-gs-minimalist-buttons: white;
+  --button-hover-text-color-gs-minimalist-buttons: black;
+  --button-border-color-gs-minimalist-buttons: white;
+  --button-border-size-gs-minimalist-buttons: 1px;
+  --button-onhover-tansition-time-gs-minimalist-buttons: 0.3s;
+  --button-border-distance-gs-minimalist-buttons: 5px;
 }
 
 ::-webkit-scrollbar {

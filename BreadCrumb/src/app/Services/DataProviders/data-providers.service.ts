@@ -18,4 +18,22 @@ export class DataProvidersService {
     {route:"/Comics",value:"Comics",name:"Comics"},
     {route:"/FoldersAndFiles",value:"FoldersAndFiles",name:"Folders And Files"}
   ];
+
+  public static GetIconSRC(iconName:string){
+    iconName = iconName.toLowerCase();
+    switch(iconName){
+      case "info":
+        return `../../../assets/files-folders/info.png`;
+      case "server":
+        return `../../../assets/files-folders/server.png`;
+      case "folder":
+        return `../../../assets/files-folders/folder.png`;
+      case "application/zip":
+        return `../../../assets/files-folders/zip.png`;
+      case "text/plain":
+        return `../../../assets/files-folders/text-plain.png`;
+      default:
+        return `../../../assets/files-folders/question-mark.png`;
+    }
+  }
 }
