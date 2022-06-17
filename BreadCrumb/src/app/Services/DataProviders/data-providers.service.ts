@@ -23,17 +23,17 @@ export class DataProvidersService {
     iconName = iconName.toLowerCase();
     switch(iconName){
       case "info":
-        return `../../../assets/files-folders/info.png`;
+        return `https://lh3.googleusercontent.com/pw/AM-JKLVY5JSCBCMBaLklKzdCcddvvipFox2mu7kKMvQ2sZTqk5_N0DRseU8ONxeBLeccq-fIhnELxEhXfuF5RSu8r9bJT9KwhRfQ5dwYLdo4_CvXgifye-Io1zHx-pCwSHu2iv30gsAAw6Fuwzc9aikO-ghY=s100-no?authuser=0`;
       case "server":
-        return `../../../assets/files-folders/server.png`;
+        return `https://lh3.googleusercontent.com/pw/AM-JKLV9CB_kXojlv7N6GJttYNn_wfWvutQB5hTA079ZA0kOmugV7O6Cqf8_vk88J8oUdINSISETDv0cPbK1gdnySRx9m0ao77pmBeX_3KoJet7pb7uCT1R4UzDOaDERDwg99MnzadCneGHSgiB_9pWZAH39=s100-no?authuser=0`;
       case "folder":
-        return `../../../assets/files-folders/folder.png`;
+        return `https://lh3.googleusercontent.com/pw/AM-JKLV-sEyiJVL6r6C_9iw6EPCUaSFw1NqSPUcq4eZuqyC1Oc9I9N2cx3zveL7FNlUmBrozRxsoHFmTHF3ON2gvn5pIlo5Fs6Cq8izOa-KBJOs43rsa0Y8YiMWLreOrpKP8KyioC7tFSFpVM68Xg4h7KnIO=s512-no?authuser=0`;
       case "application/zip":
-        return `../../../assets/files-folders/zip.png`;
+        return `https://lh3.googleusercontent.com/pw/AM-JKLVVmgCf4fFPJMDYSKGY7XezP-cpsQabbn-cseGkB3N7Ra-Bh0e4721bLswIf9SvICOSPNFluLL8-BciNT7jTSl9W3vCXCp8XaNt-I0AyKOjMewlIWKntrEn0G5gQ3UuDTrqDe9rmZx5b89gqCqWxAu0=s300-no?authuser=0`;
       case "text/plain":
-        return `../../../assets/files-folders/text-plain.png`;
+        return `https://lh3.googleusercontent.com/pw/AM-JKLVeHUIyMYCR_SfStQ63xkA_F4UXjawVNIGkiLZeMt8SoaTUsNeSUb19y5ivaub02t6mTT1qJRU-MmFRqUy-bMpptfvmYCd0jkIun58abswophXHBc8a1-xlWIJBiNSFac1VBByEpV-J2yXmzE5Yrfzg=s300-no?authuser=0`;
       default:
-        return `../../../assets/files-folders/question-mark.png`;
+        return `https://lh3.googleusercontent.com/pw/AM-JKLW-xjNDGYyErbwr5KbkYRc9awI1mp53EioZ5l9JjAP6fR59IbeFK2GIOtw1_bri7oE4yOfs0iJG3_fSuyRbc5CBvkZ9IdI11NkCiIWmVPjOdyBuVk3S366BEzOz607M3sqbGaMX29GCV-7fQzooY80U=s50-no?authuser=0`;
     }
   }
 }
