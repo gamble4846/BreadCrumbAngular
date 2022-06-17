@@ -18,6 +18,12 @@
   --activeLinkLineColor-gs-menu: #3c97ff;
   --activeLinkLineBottom-gs-menu: -27px;
   --mobileMenuExitDivColor-gs-menu: grey;
+  --footerBackgroundColor-gs-footer-one: #1C1C1E;
+  --footerPadding-gs-footer-one: 30px;
+  --footerHeader-Text-Color-gs-footer-one: white;
+  --footerBody-Text-Color-gs-footer-one: #737373;
+  --footerSocialBackgroundColor-gs-footer-one: #818a91;
+  --transition-time-gs-footer-one: 0.3s;
 }
 
 ::-webkit-scrollbar {

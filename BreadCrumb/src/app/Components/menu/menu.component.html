@@ -5,14 +5,9 @@
     </div>
     <div class="gs-menu-items">
       <ul>
-        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'Home'}" (click)="MenuLinkClicked('/Home','Home')">Home</a></li>
-        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'Movies'}" (click)="MenuLinkClicked('/Movies','Movies')">Movies</a></li>
-        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'TvShows'}" (click)="MenuLinkClicked('/TvShows','TvShows')">TvShows</a></li>
-        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'Books'}" (click)="MenuLinkClicked('/Books','Books')">Books</a></li>
-        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'Games'}" (click)="MenuLinkClicked('/Games','Games')">Games</a></li>
-        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'Manga'}" (click)="MenuLinkClicked('/Manga','Manga')">Manga</a></li>
-        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'Comics'}" (click)="MenuLinkClicked('/Comics','Comics')">Comics</a></li>
-        <li><a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == 'FoldersAndFiles'}" (click)="MenuLinkClicked('/FoldersAndFiles','FoldersAndFiles')">Folders Files</a></li>
+        <li *ngFor="let data of menuList">
+          <a class="gs-menu-link-with-active" [ngClass]="{'gs-menu-active': currentPage == data.value}" (click)="MenuLinkClicked(data.route,data.value)">{{data.name}}</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -28,14 +23,9 @@
     </div>
     <div class="gs-menu-items">
       <ul>
-        <li><a (click)="MenuLinkClicked('/Home','Home')">Home</a></li>
-        <li><a (click)="MenuLinkClicked('/Movies','Movies')">Movies</a></li>
-        <li><a (click)="MenuLinkClicked('/TvShows','TvShows')">TvShows</a></li>
-        <li><a (click)="MenuLinkClicked('/Books','Books')">Books</a></li>
-        <li><a (click)="MenuLinkClicked('/Games','Games')">Games</a></li>
-        <li><a (click)="MenuLinkClicked('/Manga','Manga')">Manga</a></li>
-        <li><a (click)="MenuLinkClicked('/Comics','Comics')">Comics</a></li>
-        <li><a (click)="MenuLinkClicked('/FoldersAndFiles','FoldersAndFiles')">Folders Files</a></li>
+        <li *ngFor="let data of menuList">
+          <a (click)="MenuLinkClicked(data.route,data.value)">{{data.name}}</a>
+        </li>
       </ul>
     </div>
   </div>

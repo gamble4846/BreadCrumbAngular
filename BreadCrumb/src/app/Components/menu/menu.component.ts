@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataProvidersService } from 'src/app/Services/DataProviders/data-providers.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,8 +10,11 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
   menuOpen:boolean = false;
   currentPage:String = "Home";
+  menuList:any = [];
 
-  constructor(private router:Router) { }
+  constructor(private router:Router) {
+    this.menuList = DataProvidersService.MenuList;
+  }
 
   ngOnInit(): void {
   }
