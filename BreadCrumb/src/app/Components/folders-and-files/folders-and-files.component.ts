@@ -53,20 +53,25 @@ export class FoldersAndFilesComponent implements OnInit {
       }
       else{
         this.getFoldersFiles();
-        this.getCurrentLocation();
         this.onlyServers = false;
       }
     });
   }
 
   getCurrentLocation(){
-    while(this.currentLocation[this.currentLocation.length - 1]){
-
+    if(this.UpperFolderIDURL != "-"){
+      this.currentLocation = [];
+      this.LocalBase.GetAllFodlersByServerID(this.ServerIDURL).subscribe((response:any) => {
+        let allFolders = response;
+        this.currentLocation.push(allFolders.find((x:any) => x.Folder_Id == this.UpperFolderIDURL));
+        while(this.currentLocation[this.currentLocation.length - 1].Folder_UpperFolderId != "-"){
+          this.currentLocation.push(
+            allFolders.find((x:any) => x.Folder_Id == this.currentLocation[this.currentLocation.length - 1].Folder_UpperFolderId)
+          );
+        }
+        this.currentLocation.reverse();
+      });
     }
-  }
-
-  getUpperFolder(){
-    let folders = this.FoldersFilesObj.Folders;
   }
 
   getServerList(){
@@ -80,6 +85,7 @@ export class FoldersAndFilesComponent implements OnInit {
     this.LocalBase.GetFoldersFilesByUpperFolderID(this.UpperFolderIDURL,this.ServerIDURL).subscribe((response:any) => {
       this.FoldersFilesObj = response;
       this.finalTableData = this.FoldersFilesObj;
+      this.getCurrentLocation();
     });
   }
 

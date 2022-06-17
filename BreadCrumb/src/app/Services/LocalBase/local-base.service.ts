@@ -51,6 +51,18 @@ export class LocalBaseService {
     return finalData;
   }
 
+  GetAllFodlersByServerID(ServerID:string){
+    let finalData = new Observable((observer:any) => {
+      this.db.collection('FoldersAndFiles').get().then((resultGET:any) => {
+        let currentServer = resultGET[0].datas.find((x:any) => x.ServerID == ServerID);
+        let currentFolders = currentServer.Data.Folders;
+        observer.next(currentFolders);
+        observer.complete();
+      });
+    })
+    return finalData;
+  }
+
   GetFoldersFilesServersList(){
     let finalData = new Observable((observer:any) => {
       this.db.collection('FoldersAndFiles').get().then((resultGET:any) => {

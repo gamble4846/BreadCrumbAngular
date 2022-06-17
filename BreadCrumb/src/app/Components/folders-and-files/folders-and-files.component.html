@@ -3,6 +3,12 @@
     <span class="gs-minimalist-button-text"><i nz-icon nzType="reload" nzTheme="outline"></i> Refresh Folders And Files</span>
   </button>
 
+  <div class="currentLoactionContainer">
+    <div class="folder-CurrentLocation" *ngFor="let data of currentLocation" (click)="FolderClicked(FoldersFilesObj.ServerId, data.Folder_Id)">
+      {{data.Folder_Name}} <span class="slash">/</span>
+    </div>
+  </div>
+
   <div>
     <table class="folders-and-files-table">
       <thead>

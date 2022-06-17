@@ -118,3 +118,22 @@
   height: 30px;
   width: 30px;
 }
+
+.currentLoactionContainer{
+  background-color: #121212;
+  padding: 20px 5px;
+  border: 1px solid var(--menuLinksHoverColor-gs-menu);
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.currentLoactionContainer .folder-CurrentLocation{
+  color: var(--menuLinksHoverColor-gs-menu);
+  cursor: pointer;
+}
+
+.currentLoactionContainer .folder-CurrentLocation .slash{
+  padding: 0px 5px;
+  color: white;
+}
