@@ -157,6 +157,7 @@ export class FoldersAndFilesComponent implements OnInit {
     if(currentIndex != 0 && currentIndex != -1){
       this.getFileLinks(files[currentIndex+1]);
     }
+    console.log(this.OpenedFile);
   }
 
   NextFile(fileId:any){
@@ -165,5 +166,6 @@ export class FoldersAndFilesComponent implements OnInit {
     if(currentIndex < files.length && currentIndex != -1){
       this.getFileLinks(files[currentIndex+1]);
     }
+    console.log(this.OpenedFile);
   }
 }

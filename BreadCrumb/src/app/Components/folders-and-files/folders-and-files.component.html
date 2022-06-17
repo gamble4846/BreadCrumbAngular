@@ -53,7 +53,8 @@
     </ng-container>
   </nz-drawer>
 
-  <nz-modal [(nzVisible)]="fileOpened" nzCentered (nzOnCancel)="CloseFile()" nzTitle="{{OpenedFile.Files_Name}}" nzWidth="90vw">
+  <nz-modal [(nzVisible)]="fileOpened" nzCentered (nzOnCancel)="CloseFile()" nzWidth="90vw" [nzTitle]="fileTitle">
+    <ng-template #fileTitle>{{OpenedFile.Files_Name}}</ng-template>
     <ng-container *nzModalContent>
       <div class="openedFileLinksContainer" *ngFor="let data of OpenedFileLinks; let i = index">
         <span (click)="OpenLink(data)">Link {{i+1}}</span>
@@ -62,9 +63,11 @@
         <iframe [src]="OpenedGoogleDriveFileEmbbedLink | safe" allow="autoplay" class="openedIframeLink"></iframe>
       </div>
     </ng-container>
-    <ng-container *nzModalFooter>
-      <button (click)="PreviousFile(OpenedFile.Files_Id)">Previous</button>
-      <button (click)="NextFile(OpenedFile.Files_Id)">Next</button>
+    <ng-container *nzModalFooter class="text-center-cus">
+      <div class="next-prev-button-container">
+        <button (click)="PreviousFile(OpenedFile.Files_Id)" class="NextPreviousButton">Previous</button>
+        <button (click)="NextFile(OpenedFile.Files_Id)" class="NextPreviousButton">Next</button>
+      </div>
     </ng-container>
   </nz-modal>
 </div>
