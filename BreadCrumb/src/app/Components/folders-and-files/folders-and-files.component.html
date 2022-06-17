@@ -1,6 +1,6 @@
 <div class="folders-and-files-main-container">
   <button (click)="refreshFilesAndFolders()" class="gs-minimalist-button gs-minimalist-button-filled gs-onhover-fade">
-    <span class="gs-minimalist-button-text">Refresh Folders And Files</span>
+    <span class="gs-minimalist-button-text"><i nz-icon nzType="reload" nzTheme="outline"></i> Refresh Folders And Files</span>
   </button>
 
   <div>
@@ -14,9 +14,8 @@
       </thead>
       <tbody *ngIf="onlyServers">
         <tr *ngFor="let data of ServersList" (click)="ServerClicked(data)">
-          <!-- GetIconSVG('Server') -->
           <td class="type-td"><img [src]="GetIconSRC('Server')" class="folders-files-icon"></td>
-          <td>{{data}}</td>
+          <td class="name-td">{{data}}</td>
           <td class="info-td"><img [src]="GetIconSRC('info')" class="folders-files-icon"></td>
         </tr>
       </tbody>
@@ -24,12 +23,12 @@
       <tbody *ngIf="!onlyServers">
         <tr *ngFor="let data of FoldersFilesObj.Folders" (click)="FolderClicked(FoldersFilesObj.ServerId, data.Folder_Id)">
           <td class="type-td"><img [src]="GetIconSRC('folder')" class="folders-files-icon"></td>
-          <td>{{data.Folder_Name}}</td>
+          <td class="name-td">{{data.Folder_Name}}</td>
           <td class="info-td"><img [src]="GetIconSRC('info')" class="folders-files-icon"></td>
         </tr>
         <tr *ngFor="let data of FoldersFilesObj.Files" (click)="getFileLinks(data.Files_Id)">
           <td class="type-td"><img [src]="GetIconSRC(data.File_Type)" class="folders-files-icon"></td>
-          <td>{{data.Files_Name}}</td>
+          <td class="name-td">{{data.Files_Name}}</td>
           <td class="info-td"><img [src]="GetIconSRC('info')" class="folders-files-icon"></td>
         </tr>
       </tbody>

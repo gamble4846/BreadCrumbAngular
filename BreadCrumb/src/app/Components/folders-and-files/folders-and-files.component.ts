@@ -15,6 +15,8 @@ export class FoldersAndFilesComponent implements OnInit {
     Files: [],
     ServerId: ""
   };
+
+  finalTableData:any;
   ServerIDURL:string = "";
   UpperFolderIDURL:string = "";
   onlyServers:boolean = false;
@@ -58,12 +60,14 @@ export class FoldersAndFilesComponent implements OnInit {
   getServerList(){
     this.LocalBase.GetFoldersFilesServersList().subscribe((response:any) => {
       this.ServersList = response;
+      this.finalTableData = this.ServersList;
     });
   }
 
   getFoldersFiles(){
     this.LocalBase.GetFoldersFilesByUpperFolderID(this.UpperFolderIDURL,this.ServerIDURL).subscribe((response:any) => {
       this.FoldersFilesObj = response;
+      this.finalTableData = this.FoldersFilesObj;
     });
   }
 

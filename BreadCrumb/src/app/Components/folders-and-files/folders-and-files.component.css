@@ -107,6 +107,13 @@
   width: 80%;
 }
 
+.folders-and-files-table .name-td{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1px;
+}
+
 .folders-files-icon{
   height: 30px;
   width: 30px;
