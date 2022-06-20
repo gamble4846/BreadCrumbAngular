@@ -155,7 +155,7 @@ export class FoldersAndFilesComponent implements OnInit {
     let files = this.FoldersFilesObj.Files;
     let currentIndex = files.findIndex((x:any) => x.Files_Id == fileId);
     if(currentIndex != 0 && currentIndex != -1){
-      this.getFileLinks(files[currentIndex+1]);
+      this.getFileLinks(files[currentIndex-1]);
     }
     console.log(this.OpenedFile);
   }
