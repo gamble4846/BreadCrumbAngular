@@ -1,71 +1,118 @@
-<div class="movies-tvshow-cards-main-container">
+<div class="movies-tvshow-cards-main-container" *ngIf="showAllMovies">
   <button (click)="refreshMovies()" class="gs-minimalist-button gs-minimalist-button-filled gs-onhover-fade">
     <span class="gs-minimalist-button-text"><i nz-icon nzType="reload" nzTheme="outline"></i> Refresh Movies</span>
   </button>
 
-  <div *ngIf="showAllMovies">
-    <div class="movies-tvshow-cards-container">
-        <div class="card-main-container" *ngFor="let data of MovieTitles" (click)="MovieTitleClicked(data.ServerId, data.Movies_Id)">
-            <div class="card-container">
-                <div class="card-header-container">
-                    <div class="text-left">{{data.Movie_IMDB_ID}}</div>
-                    <div class="text-right">{{data.Movies_ReleaseYear}}</div>
-                </div>
-                <div class="card-image-container">
-                    <img loading="lazy" src="{{data.Movies_Ver_Poster}}" class="card-image" onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/pw/AM-JKLVhC_46g0NyncUf_h2sPqUS0G9jQWgJkeEEK0E3wDC4qHKwQlgw3IQiF_2e7ywVf6iV2p3RE8x-7sgD4mmhCFNfdXvm8mBIh1GI1vXJ4LyI49o8WRE5dAG39Xu56EQ_0Q-PiALMJX9jpZFTwPYWAYQK=w586-h879-no?authuser=0';">
-                </div>
-                <div class="card-footer-container">
-                    <div class="card-title">{{data.Movies_MainName}}</div>
-                </div>
-            </div>
-        </div>
+  <div class="movies-tv-show-filter-container">
+    <div class="filter-item">
+      <nz-input-group [nzPrefix]="PrefixTemplateSearch">
+        <input type="text" nz-input placeholder="Search..." [(ngModel)]="SearchValue" (ngModelChange)="UpdateSearch()" class="searchTextBox"/>
+      </nz-input-group>
+      <ng-template #PrefixTemplateSearch>
+        <i nz-icon nz-tooltip nzTooltipTitle="Extra information" nzType="search"></i>
+      </ng-template>
+    </div>
+    <div class="filter-item">
+      <nz-select class="genreSelect" [(ngModel)]="MovieSortingType" nzPlaceHolder="Select Sorting Type">
+        <nz-option *ngFor="let item of AllSortingTypes" [nzLabel]="item" [nzValue]="item"></nz-option>
+      </nz-select>
+    </div>
+    <div class="filter-item">
+      <nz-select
+        [nzMaxTagCount]="3"
+        [nzMaxTagPlaceholder]="tagPlaceHolder"
+        nzMode="multiple"
+        nzShowSearch
+        nzPlaceHolder="Please Select Genre"
+        [(ngModel)]="selectedGenre"
+        (ngModelChange)="UpdateGenre()"
+        class="genreSelect">
+        <nz-option *ngFor="let item of AllGenres" [nzLabel]="item" [nzValue]="item"></nz-option>
+      </nz-select>
+      <ng-template #tagPlaceHolder let-selectedList>and {{ selectedList.length }} more selected</ng-template>
+    </div>
+    <div class="filter-item">
+      <nz-select class="genreSelect" [(ngModel)]="NoOfMoviePerPage" (ngModelChange)="UpdatePageCount()" nzPlaceHolder="Select Total Items Per Page">
+        <nz-option nzValue="10" nzLabel="10"></nz-option>
+        <nz-option nzValue="20" nzLabel="20"></nz-option>
+        <nz-option nzValue="30" nzLabel="30"></nz-option>
+        <nz-option nzValue="40" nzLabel="40"></nz-option>
+        <nz-option nzValue="50" nzLabel="50"></nz-option>
+        <nz-option nzValue="60" nzLabel="60"></nz-option>
+        <nz-option nzValue="70" nzLabel="70"></nz-option>
+        <nz-option nzValue="80" nzLabel="80"></nz-option>
+        <nz-option nzValue="90" nzLabel="90"></nz-option>
+        <nz-option nzValue="100" nzLabel="100"></nz-option>
+      </nz-select>
     </div>
   </div>
 
-  <div *ngIf="!showAllMovies">
-    <ul>
-      <li>Movie_IMDB_ID : {{CurrentMovieTitle.Movie_IMDB_ID}}</li>
-      <li>Movies_AltNames : {{CurrentMovieTitle.Movies_AltNames}}</li>
-      <li>Movies_Directors : {{CurrentMovieTitle.Movies_Directors}}</li>
-      <li>Movies_ExtraInformation : {{CurrentMovieTitle.Movies_ExtraInformation}}</li>
-      <li>Movies_Genre : {{CurrentMovieTitle.Movies_Genre}}</li>
-      <li>Movies_Id : {{CurrentMovieTitle.Movies_Id}}</li>
-      <li>Movies_MainName : {{CurrentMovieTitle.Movies_MainName}}</li>
-      <li>Movies_Poster : {{CurrentMovieTitle.Movies_Poster}}</li>
-      <li>Movies_ReleaseYear : {{CurrentMovieTitle.Movies_ReleaseYear}}</li>
-      <li>Movies_Stars : {{CurrentMovieTitle.Movies_Stars}}</li>
-      <li>Movies_Ver_Poster : {{CurrentMovieTitle.Movies_Ver_Poster}}</li>
-      <li>Movies_Writers : {{CurrentMovieTitle.Movies_Writers}}</li>
-    </ul>
-
-    <table>
-      <tr>
-        <th>Link_Desc</th>
-        <th>Link_Email</th>
-        <th>Link_Id</th>
-        <th>Link_Language</th>
-        <th>Link_Password</th>
-        <th>Link_Quality</th>
-        <th>Link_Size</th>
-        <th>Link_Subtitles</th>
-        <th>Link_link</th>
-        <th>Movies_Id</th>
-        <th>Streamable</th>
-      </tr>
-      <tr *ngFor="let data of CurrentMovieLinks">
-        <td>{{data.Link_Desc}}</td>
-        <td>{{data.Link_Email}}</td>
-        <td>{{data.Link_Id}}</td>
-        <td>{{data.Link_Language}}</td>
-        <td>{{data.Link_Password}}</td>
-        <td>{{data.Link_Quality}}</td>
-        <td>{{data.Link_Size}}</td>
-        <td>{{data.Link_Subtitles}}</td>
-        <td>{{data.Link_link}}</td>
-        <td>{{data.Movies_Id}}</td>
-        <td>{{data.Streamable}}</td>
-      </tr>
-    </table>
+  <div class="movies-tvshow-cards-container">
+    <div class="card-main-container" *ngFor="let data of FilteredMovieTitles" (click)="MovieTitleClicked(data.ServerId, data.Movies_Id)">
+      <div class="card-container">
+        <div class="card-header-container">
+          <div class="text-left">{{data.Movie_IMDB_ID}}</div>
+          <div class="text-right">{{data.Movies_ReleaseYear}}</div>
+        </div>
+        <div class="card-image-container">
+          <img loading="lazy" src="{{data.Movies_Ver_Poster}}" class="card-image" onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/pw/AM-JKLVhC_46g0NyncUf_h2sPqUS0G9jQWgJkeEEK0E3wDC4qHKwQlgw3IQiF_2e7ywVf6iV2p3RE8x-7sgD4mmhCFNfdXvm8mBIh1GI1vXJ4LyI49o8WRE5dAG39Xu56EQ_0Q-PiALMJX9jpZFTwPYWAYQK=w586-h879-no?authuser=0';">
+        </div>
+        <div class="card-footer-container">
+            <div class="card-title">{{data.Movies_MainName}}</div>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <div class="movies-tvshow-cards-pagination">
+    <div (click)="ChangeCurrentPage(i+1)" class="page-number" [ngClass]="{'active': i + 1 == CurrentMoviePage}" *ngFor="let item of [].constructor(TotalPages); let i = index"><div class="page-number-value">{{i + 1}}</div></div>
+  </div>
 </div>
+
+<div *ngIf="!showAllMovies">
+  <ul>
+    <li>Movie_IMDB_ID : {{CurrentMovieTitle.Movie_IMDB_ID}}</li>
+    <li>Movies_AltNames : {{CurrentMovieTitle.Movies_AltNames}}</li>
+    <li>Movies_Directors : {{CurrentMovieTitle.Movies_Directors}}</li>
+    <li>Movies_ExtraInformation : {{CurrentMovieTitle.Movies_ExtraInformation}}</li>
+    <li>Movies_Genre : {{CurrentMovieTitle.Movies_Genre}}</li>
+    <li>Movies_Id : {{CurrentMovieTitle.Movies_Id}}</li>
+    <li>Movies_MainName : {{CurrentMovieTitle.Movies_MainName}}</li>
+    <li>Movies_Poster : {{CurrentMovieTitle.Movies_Poster}}</li>
+    <li>Movies_ReleaseYear : {{CurrentMovieTitle.Movies_ReleaseYear}}</li>
+    <li>Movies_Stars : {{CurrentMovieTitle.Movies_Stars}}</li>
+    <li>Movies_Ver_Poster : {{CurrentMovieTitle.Movies_Ver_Poster}}</li>
+    <li>Movies_Writers : {{CurrentMovieTitle.Movies_Writers}}</li>
+  </ul>
+
+  <table>
+    <tr>
+      <th>Link_Desc</th>
+      <th>Link_Email</th>
+      <th>Link_Id</th>
+      <th>Link_Language</th>
+      <th>Link_Password</th>
+      <th>Link_Quality</th>
+      <th>Link_Size</th>
+      <th>Link_Subtitles</th>
+      <th>Link_link</th>
+      <th>Movies_Id</th>
+      <th>Streamable</th>
+    </tr>
+    <tr *ngFor="let data of CurrentMovieLinks">
+      <td>{{data.Link_Desc}}</td>
+      <td>{{data.Link_Email}}</td>
+      <td>{{data.Link_Id}}</td>
+      <td>{{data.Link_Language}}</td>
+      <td>{{data.Link_Password}}</td>
+      <td>{{data.Link_Quality}}</td>
+      <td>{{data.Link_Size}}</td>
+      <td>{{data.Link_Subtitles}}</td>
+      <td>{{data.Link_link}}</td>
+      <td>{{data.Movies_Id}}</td>
+      <td>{{data.Streamable}}</td>
+    </tr>
+  </table>
+</div>
+
+

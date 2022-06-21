@@ -27,6 +27,9 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzInputModule } from 'ng-zorro-antd/input';
+
 import { SafePipe } from './Pipes/SafePipe/safe.pipe';
 
 registerLocaleData(en);
@@ -56,6 +59,8 @@ registerLocaleData(en);
     NzIconModule,
     NzDrawerModule,
     NzModalModule,
+    NzSelectModule,
+    NzInputModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
