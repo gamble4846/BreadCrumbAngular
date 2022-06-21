@@ -1,0 +1,61 @@
+.movies-tvshow-cards-main-container{
+  padding: var(--main-container-padding-MTCV1);
+  font-family: 'Inter' !important;
+  background-color: var(--main-container-backgroud-color-MTCV1);
+  min-height: 100vh;
+}
+
+.movies-tvshow-cards-main-container .movies-tvshow-cards-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.movies-tvshow-cards-main-container .movies-tvshow-cards-container .card-main-container{
+  padding: var(--card-container-padding-MTCV1);
+  transition: var(--main-container-tansition-time-MTCV1) ease-in-out;
+  cursor: pointer;
+}
+
+.movies-tvshow-cards-main-container .movies-tvshow-cards-container .card-main-container:hover{
+  transform: var(--main-container-transform-on-hover-MTCV1);
+}
+
+.movies-tvshow-cards-main-container .movies-tvshow-cards-container .card-main-container .card-container{
+  position: relative;
+  width: var(--card-width-MTCV1);
+}
+
+.movies-tvshow-cards-main-container .movies-tvshow-cards-container .card-main-container .card-container .card-header-container{
+  display: flex;
+  justify-content: space-between;
+  color: var(--card-header-font-color-MTCV1);
+  font-size: var(--card-header-font-size);
+}
+
+.movies-tvshow-cards-main-container .movies-tvshow-cards-container .card-main-container .card-container .card-image-container{
+  width: var(--card-width-MTCV1);
+  height: var(--card-image-height-MTCV1);
+  padding: var(--card-image-top-bottom-padding-MTCV1) 0px;
+}
+
+.movies-tvshow-cards-main-container .movies-tvshow-cards-container .card-main-container .card-container .card-image-container .card-image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--card-image-border-radius-MTCV1);
+}
+
+.movies-tvshow-cards-main-container .movies-tvshow-cards-container .card-main-container .card-container .card-footer-container{
+  width: var(--card-width-MTCV1);
+}
+
+.movies-tvshow-cards-main-container .movies-tvshow-cards-container .card-main-container .card-container .card-footer-container .card-title{
+  width: var(--card-width-MTCV1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--card-title-font-color-MTCV1);
+  font-size: var(--card-title-font-size-MTCV1);
+}

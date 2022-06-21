@@ -4,66 +4,6 @@
   padding: 0% 5%;
 }
 
-.gs-minimalist-button{
-  position: relative;
-  display: inline-block;
-  border: var(--button-border-size-gs-minimalist-buttons) solid var(--button-border-color-gs-minimalist-buttons);
-  padding: 0;
-  background-color: transparent;
-  cursor: pointer;
-  width: max-content;
-  height: max-content;
-  padding: calc(var(--button-font-size-gs-minimalist-buttons) / 3) calc(var(--button-font-size-gs-minimalist-buttons));
-}
-
-.gs-minimalist-button .gs-minimalist-button-text{
-  position: relative;
-  display: inline-block;
-  font-size: var(--button-font-size-gs-minimalist-buttons);
-  letter-spacing: calc(var(--button-font-size-gs-minimalist-buttons) / 10);
-  top: 0;
-  left: 0;
-  width: 100%;
-  transition: var(--button-onhover-tansition-time-gs-minimalist-buttons);
-}
-
-.gs-minimalist-button.gs-minimalist-button-filled{
-  background-color: var(--button-fill-color-gs-minimalist-buttons);
-}
-
-.gs-minimalist-button .gs-minimalist-button-text{
-  color: var(--button-text-color-gs-minimalist-buttons);
-}
-
-.gs-minimalist-button.gs-minimalist-button-filled::before{
-  content: "";
-  background-color: var(--button-hover-color-gs-minimalist-buttons);
-  width: 0%;
-  height: 0%;
-  position: absolute;
-  transition: var(--button-onhover-tansition-time-gs-minimalist-buttons) ease-in-out;
-}
-
-.gs-minimalist-button.gs-minimalist-button-filled:hover .gs-minimalist-button-text{
-  color: var(--button-hover-text-color-gs-minimalist-buttons);
-}
-
-.gs-minimalist-button.gs-minimalist-button-filled.gs-onhover-fade::before{
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-}
-
-.gs-minimalist-button.gs-minimalist-button-filled:hover:before{
-  height: 100%;
-  width: 100%;
-  opacity: 1;
-}
-
 .folders-and-files-table{
   width: 100%;
   margin-top: 20px;

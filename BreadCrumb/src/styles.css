@@ -39,6 +39,20 @@
   --button-border-size-gs-minimalist-buttons: 1px;
   --button-onhover-tansition-time-gs-minimalist-buttons: 0.3s;
   --button-border-distance-gs-minimalist-buttons: 5px;
+
+  --main-container-padding-MTCV1: 10px 600px;
+  --main-container-backgroud-color-MTCV1: #141414;
+  --main-container-transform-on-hover-MTCV1: scale(105%);
+  --main-container-tansition-time-MTCV1: 0.2s;
+  --card-container-padding-MTCV1: 10px;
+  --card-header-font-color-MTCV1: white;
+  --card-header-font-size: 15px;
+  --card-image-height-MTCV1: 400px;
+  --card-image-top-bottom-padding-MTCV1: 10px;
+  --card-image-border-radius-MTCV1: 10px;
+  --card-title-font-color-MTCV1: white;
+  --card-title-font-size-MTCV1: 20px;
+  --card-width-MTCV1: 250px;
 }
 
 ::-webkit-scrollbar {
@@ -56,4 +70,120 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #2d77ca;
+}
+
+
+@media screen and (max-width: 2560px) {
+  :root{
+    --main-container-padding-MTCV1: 10px 500px;
+    --card-image-height-MTCV1: 400px;
+    --card-width-MTCV1: 250px;
+    --card-title-font-size-MTCV1: 20px;
+    --card-header-font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  :root{
+    --main-container-padding-MTCV1: 10px 50px;
+    --card-image-height-MTCV1: 300px;
+    --card-width-MTCV1: 180px;
+    --card-title-font-size-MTCV1: 18px;
+    --card-header-font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  :root{
+    --main-container-padding-MTCV1: 10px 40px;
+    --card-title-font-size-MTCV1: 17px;
+    --card-header-font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root{
+    --main-container-padding-MTCV1: 10px 30px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  :root{
+    --main-container-padding-MTCV1: 10px 10px;
+    --card-image-height-MTCV1: 200px;
+    --card-width-MTCV1: 130px;
+    --card-title-font-size-MTCV1: 16px;
+    --card-header-font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  :root{
+    --main-container-padding-MTCV1: 10px 10px;
+    --card-image-height-MTCV1: 130px;
+    --card-width-MTCV1: 80px;
+    --card-title-font-size-MTCV1: 13px;
+    --card-header-font-size: 10px;
+  }
+}
+
+
+.gs-minimalist-button{
+  position: relative;
+  display: inline-block;
+  border: var(--button-border-size-gs-minimalist-buttons) solid var(--button-border-color-gs-minimalist-buttons);
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  width: max-content;
+  height: max-content;
+  padding: calc(var(--button-font-size-gs-minimalist-buttons) / 3) calc(var(--button-font-size-gs-minimalist-buttons));
+}
+
+.gs-minimalist-button .gs-minimalist-button-text{
+  position: relative;
+  display: inline-block;
+  font-size: var(--button-font-size-gs-minimalist-buttons);
+  letter-spacing: calc(var(--button-font-size-gs-minimalist-buttons) / 10);
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: var(--button-onhover-tansition-time-gs-minimalist-buttons);
+}
+
+.gs-minimalist-button.gs-minimalist-button-filled{
+  background-color: var(--button-fill-color-gs-minimalist-buttons);
+}
+
+.gs-minimalist-button .gs-minimalist-button-text{
+  color: var(--button-text-color-gs-minimalist-buttons);
+}
+
+.gs-minimalist-button.gs-minimalist-button-filled::before{
+  content: "";
+  background-color: var(--button-hover-color-gs-minimalist-buttons);
+  width: 0%;
+  height: 0%;
+  position: absolute;
+  transition: var(--button-onhover-tansition-time-gs-minimalist-buttons) ease-in-out;
+}
+
+.gs-minimalist-button.gs-minimalist-button-filled:hover .gs-minimalist-button-text{
+  color: var(--button-hover-text-color-gs-minimalist-buttons);
+}
+
+.gs-minimalist-button.gs-minimalist-button-filled.gs-onhover-fade::before{
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.gs-minimalist-button.gs-minimalist-button-filled:hover:before{
+  height: 100%;
+  width: 100%;
+  opacity: 1;
 }
