@@ -13,13 +13,13 @@
       </ng-template>
     </div>
     <div class="filter-item">
-      <nz-select class="genreSelect" [(ngModel)]="MovieSortingType" nzPlaceHolder="Select Sorting Type">
+      <nz-select class="genreSelect" [(ngModel)]="MovieSortingType" nzPlaceHolder="Select Sorting Type" (ngModelChange)="UpdateSorting()">
         <nz-option *ngFor="let item of AllSortingTypes" [nzLabel]="item" [nzValue]="item"></nz-option>
       </nz-select>
     </div>
     <div class="filter-item">
       <nz-select
-        [nzMaxTagCount]="3"
+        [nzMaxTagCount]="1"
         [nzMaxTagPlaceholder]="tagPlaceHolder"
         nzMode="multiple"
         nzShowSearch

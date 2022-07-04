@@ -93,7 +93,7 @@
 .movies-tvshow-cards-main-container .movies-tv-show-filter-container{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 10px 0px;
 }
 
@@ -103,4 +103,11 @@
 
 .movies-tv-show-filter-container .filter-item{
   width: 24%;
+}
+
+@media screen and (max-width: 500px) {
+  .movies-tv-show-filter-container .filter-item{
+    width: 100%;
+    margin-top: 20px;
+  }
 }

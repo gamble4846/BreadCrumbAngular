@@ -91,6 +91,14 @@ export class MoivesComponent implements OnInit {
     );
   }
 
+  UpdateSorting(){
+    console.log(this.MovieSortingType);
+    this.router.navigate(
+      ['/Movies'],
+      { queryParams: {MovieSearchTerm: this.MovieSearchTerm, MovieSortingType: this.MovieSortingType, MovieFilterGenre: this.MovieFilterGenre, NoOfMoviePerPage: this.NoOfMoviePerPage, CurrentMoviePage: this.CurrentMoviePage}}
+    );
+  }
+
   getFilteringValuesMovies(){
     this.AllSortingTypes = ["AZ_ASC", "AZ_DESC", "YEAR_ASC", "YEAR_DESC", "ADDED_ASC", "ADDED_DESC"];
 
@@ -163,6 +171,7 @@ export class MoivesComponent implements OnInit {
         this.FilteredMovieTitles.sort((a:any, b:any) => b.Movies_MainName.toString().localeCompare(a.Movies_MainName.toString()));
         break;
       case "YEAR_ASC":
+
         this.FilteredMovieTitles.sort((a:any, b:any) => a.Movies_ReleaseYear.toString().localeCompare(b.Movies_ReleaseYear.toString()));
         break;
       case "YEAR_DESC":
