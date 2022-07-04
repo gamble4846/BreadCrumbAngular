@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import Localbase from 'localbase';
 import { Observable } from 'rxjs';
 import { GoogleAppScriptsService } from '../GoogleAppScripts/google-app-scripts.service';
+import { ZorroNotificationService } from '../ZorroNotification/zorro-notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { GoogleAppScriptsService } from '../GoogleAppScripts/google-app-scripts.
 
 export class LocalBaseService {
   db:any;
-  constructor(public GoogleAppScripts: GoogleAppScriptsService) {
+  constructor(public GoogleAppScripts: GoogleAppScriptsService, public ZorroNotification: ZorroNotificationService) {
     this.db = new Localbase('BreadCrumbDB');
   }
 
@@ -81,23 +82,32 @@ export class LocalBaseService {
   }
 
   SaveFoldersFilesFromSheetAndSavetoLocalBase(){
+    this.ZorroNotification.log('info', "Folders And Files", "Getting Data From App Scripts", true, null);
     let finalData = new Observable((observer:any) => {
       this.GoogleAppScripts.GetFoldersAndFiles().subscribe((response:any) => {
+        this.ZorroNotification.log('info', "Folders And Files", "Data Recieved From App Scripts", true, null);
         if(response.status == "200"){
+          this.ZorroNotification.log('success', "Folders And Files", "Data Valid", true, null);
           let dataToAdd = {datas:response.data};
+          this.ZorroNotification.log('info', "Folders And Files", "Deleting Data From Local Database", false, null);
           this.db.collection('FoldersAndFiles').delete().then((resultLBDEL:any) => {
+            this.ZorroNotification.log('success', "Folders And Files", "Data Deleted From Local Database", false, null);
+            this.ZorroNotification.log('info', "Folders And Files", "Adding New Data To Local Database", false, null);
             this.db.collection('FoldersAndFiles').add(dataToAdd).then((resultLBADD:any) => {
+              this.ZorroNotification.log('success', "Folders And Files", "New Data Added To Local Database", false, null);
               observer.next(true);
               observer.complete();
             });
           });
         }
         else{
+          this.ZorroNotification.log('error', "Folders And Files", "Data Invalid", false, null);
           observer.next(false);
           observer.complete();
         }
       },
       (error) => {
+        this.ZorroNotification.log('error', "Folders And Files", "Data Not Recieved From App Scripts", false, error);
         observer.next(false);
         observer.complete();
       });
@@ -152,23 +162,32 @@ export class LocalBaseService {
   }
 
   SaveMoviesFromSheetAndSavetoLocalBase(){
+    this.ZorroNotification.log('info', "Movies", "Getting Data From App Scripts", true, null);
     let finalData = new Observable((observer:any) => {
       this.GoogleAppScripts.GetMovies().subscribe((response:any) => {
+        this.ZorroNotification.log('info', "Movies", "Data Recieved From App Scripts", true, null);
         if(response.status == "200"){
+          this.ZorroNotification.log('success', "Movies", "Data Valid", true, null);
           let dataToAdd = {datas:response.data};
+          this.ZorroNotification.log('info', "Movies", "Deleting Data From Local Database", false, null);
           this.db.collection('Movies').delete().then((resultLBDEL:any) => {
+            this.ZorroNotification.log('success', "Movies", "Data Deleted From Local Database", false, null);
+            this.ZorroNotification.log('info', "Movies", "Adding New Data To Local Database", false, null);
             this.db.collection('Movies').add(dataToAdd).then((resultLBADD:any) => {
+              this.ZorroNotification.log('success', "Movies", "New Data Added To Local Database", false, null);
               observer.next(true);
               observer.complete();
             });
           });
         }
         else{
+          this.ZorroNotification.log('error', "Movies", "Data Invalid", false, null);
           observer.next(false);
           observer.complete();
         }
       },
       (error) => {
+        this.ZorroNotification.log('error', "Movies", "Data Not Recieved From App Scripts", false, error);
         observer.next(false);
         observer.complete();
       });
@@ -223,23 +242,32 @@ export class LocalBaseService {
   }
 
   SaveBooksFromSheetAndSavetoLocalBase(){
+    this.ZorroNotification.log('info', "Books", "Getting Data From App Scripts", true, null);
     let finalData = new Observable((observer:any) => {
       this.GoogleAppScripts.GetBooks().subscribe((response:any) => {
+        this.ZorroNotification.log('info', "Books", "Data Recieved From App Scripts", true, null);
         if(response.status == "200"){
+          this.ZorroNotification.log('success', "Books", "Data Valid", true, null);
           let dataToAdd = {datas:response.data};
+          this.ZorroNotification.log('info', "Books", "Deleting Data From Local Database", false, null);
           this.db.collection('Books').delete().then((resultLBDEL:any) => {
+            this.ZorroNotification.log('success', "Books", "Data Deleted From Local Database", false, null);
+            this.ZorroNotification.log('info', "Books", "Adding New Data To Local Database", false, null);
             this.db.collection('Books').add(dataToAdd).then((resultLBADD:any) => {
+              this.ZorroNotification.log('success', "Books", "New Data Added To Local Database", false, null);
               observer.next(true);
               observer.complete();
             });
           });
         }
         else{
+          this.ZorroNotification.log('error', "Books", "Data Invalid", false, null);
           observer.next(false);
           observer.complete();
         }
       },
       (error) => {
+        this.ZorroNotification.log('error', "Books", "Data Not Recieved From App Scripts", false, error);
         observer.next(false);
         observer.complete();
       });
@@ -293,23 +321,32 @@ export class LocalBaseService {
   }
 
   SaveGamesFromSheetAndSavetoLocalBase(){
+    this.ZorroNotification.log('info', "Games", "Getting Data From App Scripts", true, null);
     let finalData = new Observable((observer:any) => {
       this.GoogleAppScripts.GetGames().subscribe((response:any) => {
+        this.ZorroNotification.log('info', "Games", "Data Recieved From App Scripts", true, null);
         if(response.status == "200"){
+          this.ZorroNotification.log('success', "Games", "Data Valid", true, null);
           let dataToAdd = {datas:response.data};
+          this.ZorroNotification.log('info', "Games", "Deleting Data From Local Database", false, null);
           this.db.collection('Games').delete().then((resultLBDEL:any) => {
+            this.ZorroNotification.log('success', "Games", "Data Deleted From Local Database", false, null);
+            this.ZorroNotification.log('info', "Games", "Adding New Data To Local Database", false, null);
             this.db.collection('Games').add(dataToAdd).then((resultLBADD:any) => {
+              this.ZorroNotification.log('success', "Games", "New Data Added To Local Database", false, null);
               observer.next(true);
               observer.complete();
             });
           });
         }
         else{
+          this.ZorroNotification.log('error', "Games", "Data Invalid", false, null);
           observer.next(false);
           observer.complete();
         }
       },
       (error) => {
+        this.ZorroNotification.log('error', "Games", "Data Not Recieved From App Scripts", false, error);
         observer.next(false);
         observer.complete();
       });
@@ -389,23 +426,32 @@ export class LocalBaseService {
   }
 
   SaveTvShowsFromSheetAndSavetoLocalBase(){
+    this.ZorroNotification.log('info', "TvShows", "Getting Data From App Scripts", true, null);
     let finalData = new Observable((observer:any) => {
       this.GoogleAppScripts.GetTvShows().subscribe((response:any) => {
+        this.ZorroNotification.log('info', "TvShows", "Data Recieved From App Scripts", true, null);
         if(response.status == "200"){
+          this.ZorroNotification.log('success', "TvShows", "Data Valid", true, null);
           let dataToAdd = {datas:response.data};
+          this.ZorroNotification.log('info', "TvShows", "Deleting Data From Local Database", false, null);
           this.db.collection('TvShows').delete().then((resultLBDEL:any) => {
+            this.ZorroNotification.log('success', "TvShows", "Data Deleted From Local Database", false, null);
+            this.ZorroNotification.log('info', "TvShows", "Adding New Data To Local Database", false, null);
             this.db.collection('TvShows').add(dataToAdd).then((resultLBADD:any) => {
+              this.ZorroNotification.log('success', "TvShows", "New Data Added To Local Database", false, null);
               observer.next(true);
               observer.complete();
             });
           });
         }
         else{
+          this.ZorroNotification.log('error', "TvShows", "Data Invalid", false, null);
           observer.next(false);
           observer.complete();
         }
       },
       (error) => {
+        this.ZorroNotification.log('error', "TvShows", "Data Not Recieved From App Scripts", false, error);
         observer.next(false);
         observer.complete();
       });
@@ -472,23 +518,32 @@ export class LocalBaseService {
   }
 
   SaveComicsFromSheetAndSavetoLocalBase(){
+    this.ZorroNotification.log('info', "Comics", "Getting Data From App Scripts", true, null);
     let finalData = new Observable((observer:any) => {
       this.GoogleAppScripts.GetComics().subscribe((response:any) => {
+        this.ZorroNotification.log('info', "Comics", "Data Recieved From App Scripts", true, null);
         if(response.status == "200"){
+          this.ZorroNotification.log('success', "Comics", "Data Valid", true, null);
           let dataToAdd = {datas:response.data};
+          this.ZorroNotification.log('info', "Comics", "Deleting Data From Local Database", false, null);
           this.db.collection('Comics').delete().then((resultLBDEL:any) => {
+            this.ZorroNotification.log('success', "Comics", "Data Deleted From Local Database", false, null);
+            this.ZorroNotification.log('info', "Comics", "Adding New Data To Local Database", false, null);
             this.db.collection('Comics').add(dataToAdd).then((resultLBADD:any) => {
+              this.ZorroNotification.log('success', "Comics", "New Data Added To Local Database", false, null);
               observer.next(true);
               observer.complete();
             });
           });
         }
         else{
+          this.ZorroNotification.log('error', "Comics", "Data Invalid", false, null);
           observer.next(false);
           observer.complete();
         }
       },
       (error) => {
+        this.ZorroNotification.log('error', "Comics", "Data Not Recieved From App Scripts", false, error);
         observer.next(false);
         observer.complete();
       });
@@ -568,23 +623,32 @@ export class LocalBaseService {
   }
 
   SaveMangaFromSheetAndSavetoLocalBase(){
+    this.ZorroNotification.log('info', "Manga", "Getting Data From App Scripts", true, null);
     let finalData = new Observable((observer:any) => {
       this.GoogleAppScripts.GetManga().subscribe((response:any) => {
+        this.ZorroNotification.log('info', "Manga", "Data Recieved From App Scripts", true, null);
         if(response.status == "200"){
+          this.ZorroNotification.log('success', "Manga", "Data Valid", true, null);
           let dataToAdd = {datas:response.data};
+          this.ZorroNotification.log('info', "Manga", "Deleting Data From Local Database", false, null);
           this.db.collection('Manga').delete().then((resultLBDEL:any) => {
+            this.ZorroNotification.log('success', "Manga", "Data Deleted From Local Database", false, null);
+            this.ZorroNotification.log('info', "Manga", "Adding New Data To Local Database", false, null);
             this.db.collection('Manga').add(dataToAdd).then((resultLBADD:any) => {
+              this.ZorroNotification.log('success', "Manga", "New Data Added To Local Database", false, null);
               observer.next(true);
               observer.complete();
             });
           });
         }
         else{
+          this.ZorroNotification.log('error', "Manga", "Data Invalid", false, null);
           observer.next(false);
           observer.complete();
         }
       },
       (error) => {
+        this.ZorroNotification.log('error', "Manga", "Data Not Recieved From App Scripts", false, error);
         observer.next(false);
         observer.complete();
       });
